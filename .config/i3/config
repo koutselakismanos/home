@@ -294,6 +294,9 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
+exec_always "setxkbmap -layout us,gr"
+exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
@@ -424,5 +427,3 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-exec "setxkbmap -layout us,gr"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
