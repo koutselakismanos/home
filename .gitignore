@@ -2,4 +2,7 @@
 
 !.gitignore
 !.zshrc
-!.config/
+!.config/i3
+!.config/rofi
+!.config/polybar
+!.config/nitrogen

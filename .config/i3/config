@@ -8,6 +8,7 @@ set $right l
 set $down j
 set $up k
 
+
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
