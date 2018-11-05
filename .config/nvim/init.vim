@@ -36,18 +36,20 @@ Plug 'tellijo/vim-react-native-snippets'
 Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
-Plug 'carlitux/deoplete-ternjs', {'do': 'npm install -g tern'}
-Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+" Plug 'carlitux/deoplete-ternjs', {'do': 'npm install -g tern'}
+" Plug 'honza/vim-snippets'
+" Plug 'ervandew/supertab'
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 "Plug 'valloric/youcompleteme'
-Plug 'sirver/ultisnips'
+" Plug 'sirver/ultisnips'
 
 
 
