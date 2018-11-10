@@ -364,7 +364,7 @@ let g:deoplete#enable_at_startup=1
 "  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
 
 " Automatically start language servers.
-let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_autoStart = 1
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
@@ -373,6 +373,8 @@ set completefunc=LanguageClient#complete
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls'],
+    \ 'c': ['~/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
     \ }
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
