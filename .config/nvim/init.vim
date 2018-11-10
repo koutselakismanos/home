@@ -30,26 +30,27 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 
 "Language specific plugins
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'tellijo/vim-react-native-snippets'
 Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-" Plug 'carlitux/deoplete-ternjs', {'do': 'npm install -g tern'}
-" Plug 'honza/vim-snippets'
-" Plug 'ervandew/supertab'
-" if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-" else
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-"Plug 'valloric/youcompleteme'
-" Plug 'sirver/ultisnips'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ },
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+    Plug 'roxma/nvim-completion-manager'
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'sirver/ultisnips'
 
 
 
@@ -305,3 +306,77 @@ let g:deoplete#enable_at_startup=1
                  \ 'vue',
                  \ '...'
                  \ ]
+
+
+ "LanguageClient
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['/usr/local/bin/pyls'],
+"     \ }
+
+" let g:LanguageClient_autoStart = 1
+
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+"     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+"     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+"     \ 'python': ['/usr/local/bin/pyls'],
+"     \ }
+
+" Automatically start language servers.
+"let g:LanguageClient_autoStart = 1
+
+"" Minimal LSP configuration for JavaScript
+"let g:LanguageClient_serverCommands = {}
+"" if executable('javascript-typescript-stdio')
+"  " Use LanguageServer for omnifunc completion
+"" else
+"  " echo "javascript-typescript-stdio not installed!\n"
+"  " :cq
+"" endif
+
+""Javascript language server
+"let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
+
+"autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
+
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+"" <leader>lh for type info under cursor
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+"" <leader>lr to rename variable under cursor
+"autocmd FileType javascript nnoremap <buffer>
+"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+
+
+""Python language server
+"let g:LanguageClient_serverCommands.python = ['pyls']
+
+"autocmd FileType python setlocal omnifunc=LanguageClient#complete
+
+"autocmd FileType python nnoremap <buffer>
+"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
+"" <leader>lh for type info under cursor
+"autocmd FileType python nnoremap <buffer>
+"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
+"" <leader>lr to rename variable under cursor
+"autocmd FileType python nnoremap <buffer>
+"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+set completefunc=LanguageClient#complete
+
+let g:LanguageClient_serverCommands = {
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls'],
+    \ }
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
