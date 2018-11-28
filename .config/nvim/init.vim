@@ -4,6 +4,7 @@ if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
     call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
 endif
 
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -313,62 +314,7 @@ let g:deoplete#enable_at_startup=1
                  \ '...'
                  \ ]
 
-
- "LanguageClient
-" let g:LanguageClient_serverCommands = {
-"     \ 'python': ['/usr/local/bin/pyls'],
-"     \ }
-
-" let g:LanguageClient_autoStart = 1
-
-" let g:LanguageClient_serverCommands = {
-"     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-"     \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-"     \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
-"     \ 'python': ['/usr/local/bin/pyls'],
-"     \ }
-
-" Automatically start language servers.
-"let g:LanguageClient_autoStart = 1
-
-"" Minimal LSP configuration for JavaScript
-"let g:LanguageClient_serverCommands = {}
-"" if executable('javascript-typescript-stdio')
-"  " Use LanguageServer for omnifunc completion
-"" else
-"  " echo "javascript-typescript-stdio not installed!\n"
-"  " :cq
-"" endif
-
-""Javascript language server
-"let g:LanguageClient_serverCommands.javascript = ['javascript-typescript-stdio']
-
-"autocmd FileType javascript setlocal omnifunc=LanguageClient#complete
-
-"autocmd FileType javascript nnoremap <buffer>
-"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-"" <leader>lh for type info under cursor
-"autocmd FileType javascript nnoremap <buffer>
-"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-"" <leader>lr to rename variable under cursor
-"autocmd FileType javascript nnoremap <buffer>
-"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-
-
-""Python language server
-"let g:LanguageClient_serverCommands.python = ['pyls']
-
-"autocmd FileType python setlocal omnifunc=LanguageClient#complete
-
-"autocmd FileType python nnoremap <buffer>
-"  \ <leader>ld :call LanguageClient_textDocument_definition()<cr>
-"" <leader>lh for type info under cursor
-"autocmd FileType python nnoremap <buffer>
-"  \ <leader>lh :call LanguageClient_textDocument_hover()<cr>
-"" <leader>lr to rename variable under cursor
-"autocmd FileType python nnoremap <buffer>
-"  \ <leader>lr :call LanguageClient_textDocument_rename()<cr>
-
+"----------------------------------------
 " Automatically start language servers.
 " let g:LanguageClient_autoStart = 1
 
