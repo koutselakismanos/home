@@ -298,6 +298,9 @@ exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 exec_always "setxkbmap -layout us,gr"
 exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 
+exec_always "xrandr --output DisplayPort-3 --set underscan on"
+exec_always "xrandr --output DisplayPort-3 --set \"underscan hborder\" 50 --set \"underscan vborder\" 16"
+
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
 # https://i3wm.org/docs/userguide.html#xresources
