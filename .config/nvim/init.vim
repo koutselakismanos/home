@@ -59,8 +59,6 @@ else
 endif
 Plug 'sirver/ultisnips'
 
-
-
 "---------------------------------------------------------------------------------
 " Initialize plugin system
 call plug#end()
