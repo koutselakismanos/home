@@ -4,7 +4,6 @@ if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
     call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
 endif
 
-
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
