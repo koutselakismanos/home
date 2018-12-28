@@ -310,7 +310,7 @@ exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
 exec_always "xrandr --output DisplayPort-3 --set underscan on"
 exec_always "xrandr --output DisplayPort-3 --set \"underscan hborder\" 50 --set \"underscan vborder\" 16"
 
-exec_always "xset r rate 200 25"
+exec_always "xset r rate 200 30"
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
