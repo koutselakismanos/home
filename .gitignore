@@ -7,3 +7,5 @@
 !.config/polybar
 !.config/nitrogen
 !.config/nvim
+!.config/termite
+!install_arch.sh
