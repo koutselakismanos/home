@@ -68,7 +68,7 @@ set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
 set guioptions-=L "remove left-hand scrollbar
 set background=dark
-colorscheme apprentice
+" colorscheme apprentice
 set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
 
 
