@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
 Plug 'flazz/vim-colorschemes'
-Plug 'yggdroot/indentline'
+" Plug 'yggdroot/indentline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'powerline/fonts'
 Plug 'rafi/awesome-vim-colorschemes'
@@ -50,7 +50,7 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    Plug 'roxma/nvim-completion-manager'
+    " Plug 'roxma/nvim-completion-manager'
 else
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
@@ -68,7 +68,7 @@ set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
 set guioptions-=L "remove left-hand scrollbar
 set background=dark
-" colorscheme apprentice
+colorscheme apprentice
 set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
 
 
@@ -125,6 +125,7 @@ set encoding=utf-8
 "on search highlight instances
 set hlsearch
 
+
 "ex mode command completion
 set wildmenu
 
@@ -151,7 +152,6 @@ autocmd filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 "doesn't wrap lines
 set nowrap
-
 "convert tab to spaces
 set expandtab
 "show existing tab with 8 spaces
@@ -179,6 +179,10 @@ set title
 set visualbell
 set noerrorbells
 set pastetoggle=<F2>
+
+"Guide lines
+set listchars=tab:\|\
+set list
 
 "---------------------------------------------------------------------------------
 "Leader
