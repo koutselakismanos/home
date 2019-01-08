@@ -182,8 +182,8 @@ set noerrorbells
 set pastetoggle=<F2>
 
 "Guide lines
-set listchars=tab:\|\
-set list
+" set listchars=tab:\|\
+" set list
 
 "---------------------------------------------------------------------------------
 "Leader
