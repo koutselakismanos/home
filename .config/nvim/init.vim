@@ -40,6 +40,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'tellijo/vim-react-native-snippets'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
 
 "AutoCompletion
 Plug 'autozimu/LanguageClient-neovim', {
