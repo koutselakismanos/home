@@ -23,7 +23,8 @@ Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 " Plug 'SearchComplete'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', {'dir': '~/.zzf', 'do': './install -all'}
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 
@@ -326,12 +327,15 @@ set completefunc=LanguageClient#complete
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls'],
-    \ 'c': ['~/Downloads/ccls/Release/ccls', '--log-file=/tmp/cc.log'],
-    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'c': ['cquery', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['cquery', '--log-file=/tmp/cc.log'],
     \ }
 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <F6> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
+
+" Run specific language and compile it
+map <F5> :!gcc % && ./a.out <CR>
