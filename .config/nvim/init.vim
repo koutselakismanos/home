@@ -327,7 +327,7 @@ set completefunc=LanguageClient#complete
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls'],
-    \ 'c': ['cquery', '--log-file=/tmp/cc.log'],
+    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
     \ 'cpp': ['cquery', '--log-file=/tmp/cc.log'],
     \ }
 
