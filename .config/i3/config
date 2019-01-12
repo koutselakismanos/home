@@ -38,8 +38,9 @@ floating_modifier $mod
 # start a terminal
 # bindsym $mod+Return exec terminal
 # bindsym $mod+Return exec terminator
-bindsym $mod+Return exec termite
-bindsym $mod+Shift+Return exec termite --class floaty
+# NEED TO INSTALL XCWD FOR THIS TO WORK
+bindsym $mod+Return exec termite /usr/bin/termite -d "$(xcwd)"
+bindsym $mod+Shift+Return exec termite /usr/bin/termite -d "$(xcwd)" --class floaty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -207,7 +208,7 @@ workspace 3 output $monitorOne
 workspace 4 output $monitorTwo
 
 # Open specific applications in floating mode
-for_window [class="floaty"]  floating enable border pixel 2, resize grow left 200, resize grow right 200
+for_window [class="floaty"]  floating enable border pixel 2, resize grow left 200,resize grow down 200, resize grow right 200, move down 200;
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
