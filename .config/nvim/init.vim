@@ -221,7 +221,6 @@ nnoremap <leader>Y "+y
 nnoremap <leader>P "+y
 
 
-
 "---------------------------------------------------------------------------------
 ""Airline
 "let g:airline#extensions#tabline#enabled = 1
