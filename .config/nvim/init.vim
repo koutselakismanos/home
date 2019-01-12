@@ -219,7 +219,7 @@ xmap ga <Plug>(EasyAlign)
 nnoremap <leader>y "*y
 nnoremap <leader>p "*p
 nnoremap <leader>Y "+y
-nnoremap <leader>P "+y
+nnoremap <leader>P "+p
 
 
 "---------------------------------------------------------------------------------
