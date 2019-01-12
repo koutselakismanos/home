@@ -210,6 +210,8 @@ nnoremap <leader>f :FZF<CR>
 
 " nnoremap <leader><leader> <leader><leader>s
 imap jk <Esc>
+imap JK <Esc>
+
 
 "Easy align
 nmap ga <Plug>(EasyAlign)
