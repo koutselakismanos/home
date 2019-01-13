@@ -1,7 +1,9 @@
 "Plug auto-install
-if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
-    call system(expand("mkdir -p ~/.config/nvim/autoload"))
-    call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
+if 0
+    if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
+        call system(expand("mkdir -p ~/.config/nvim/autoload"))
+        call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
+    endif
 endif
 
 " Specify a directory for plugins
