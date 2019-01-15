@@ -25,7 +25,7 @@ font-2 = "Font Awesome 5 Brands:size=10;1"
 
 modules-left = powermenu i3
 modules-center = title
-modules-right = cpu memory keyboard date 
+modules-right =  cpu memory keyboard popup-calendar 
 
 tray-position = right
 ;tray-padding =
@@ -96,6 +96,16 @@ format-connected-prefix-foreground = #1d1f21
 label-connected = %local_ip%
 
 format-disconnected =
+
+[module/popup-calendar]
+type = custom/script
+exec = ~/.config/polybar/popup-calendar.sh
+interval = 5
+click-left = ~/.config/polybar/popup-calendar.sh --popup
+format-prefix = 
+format-foreground = #1d1f21
+format-background = #FFAF1B
+format-padding = 2
 
 [module/date]
 type = internal/date
@@ -200,6 +210,8 @@ format-foreground = #FFAF1B
 label = %title%
 label-maxlen = 50
 label-empty = -----
+
+
 
 [module/memory]
 type = internal/memory

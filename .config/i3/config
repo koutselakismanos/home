@@ -209,6 +209,7 @@ workspace 4 output $monitorTwo
 
 # Open specific applications in floating mode
 for_window [class="floaty"]  floating enable border pixel 2, resize grow left 200,resize grow down 200, resize grow right 200, move down 200;
+for_window [class="Yad"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
