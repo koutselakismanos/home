@@ -3,6 +3,7 @@
 !.gitignore
 !.zshrc
 !.config/i3
+!.config/termite
 !.config/rofi
 !.config/polybar
 !.config/nitrogen
