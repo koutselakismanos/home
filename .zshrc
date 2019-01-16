@@ -100,6 +100,10 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="/usr/bin/nvim"
 export VISUAL="/usr/bin/nvim"
 
-#----------------- for ruby rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
+#----------------- go path
+export GOPATH=$HOME/go
+export PATH="$PATH:$GOPATH/bin"
+
+#----------------- ruby rbenv path
+export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
