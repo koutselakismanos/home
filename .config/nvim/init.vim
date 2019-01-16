@@ -342,4 +342,5 @@ nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
 " Run specific language and compile it
-map <F5> :w <CR> :!gcc % && ./a.out <CR>
+autocmd filetype c nnoremap <F5> :w <CR> :!gcc % && ./a.out <CR>
+autocmd filetype cpp nnoremap <F5> :w <CR> :!g++ % && ./a.out <CR>
