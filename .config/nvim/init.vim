@@ -345,3 +345,4 @@ nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 autocmd filetype c nnoremap <F5> :w <CR> :!gcc % && ./a.out <CR>
 autocmd filetype cpp nnoremap <F5> :w <CR> :!g++ % && ./a.out <CR>
 autocmd filetype python nnoremap <F5> :w <CR> :!python % <CR>
+autocmd filetype php nnoremap <F5> :w <CR> :!php % <CR>
