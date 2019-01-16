@@ -332,7 +332,7 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls'],
     \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'cpp': ['cquery', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
     \ }
 
 nnoremap <F6> :call LanguageClient_contextMenu()<CR>
