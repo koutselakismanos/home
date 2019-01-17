@@ -146,6 +146,12 @@ set number
 "display line relative to position
 set relativenumber
 
+"mouse cursor in terminal
+set mouse=a
+
+"better clipboard
+set clipboard+=unnamedplus
+
 "each time a new or existing file is edited, 
 "vim will try to recognize the type of the file and set the 'filetype' option. 
 "this will trigger the filetype event, which can be used to set the syntax highlighting,
