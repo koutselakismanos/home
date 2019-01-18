@@ -299,7 +299,7 @@ let g:deoplete#sources#ternjs#case_insensitive = 1
 let g:deoplete#sources#ternjs#guess = 0
 
 " Determines whether the result set will be sorted. Default: 1
-" let g:deoplete#sources#ternjs#sort = 0
+let g:deoplete#sources#ternjs#sort = 0
 
 " When disabled, only the text before the given position is considered part of 
 " the word. When enabled (the default), the whole variable name that the cursor
@@ -353,8 +353,9 @@ nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
 " Run specific language and compile it
-autocmd filetype c nmap <F5> :w <CR> :!gcc % && ./a.out <CR>
-autocmd filetype cpp nmap <F5> :w <CR> :!g++ % && ./a.out <CR>
-autocmd filetype python nmap <F5> :w <CR> :!python % <CR>
-autocmd filetype php nmap <F5> :w <CR> :!php % <CR>
-autocmd filetype go nmap <F5> :w <CR> :!go run % <CR>
+autocmd filetype c nnoremap <silent><F5> :w <CR> :split term://gcc % && ./a.out <CR> i
+autocmd filetype cpp nnoremap <silent><F5> :w <CR> :split term://g++ % && ./a.out <CR> i
+autocmd filetype python nnoremap <silent><F5> :w <CR> :split term://python % <CR> i
+autocmd filetype php nnoremap <silent><F5> :w <CR> :split term://php % <CR> i
+autocmd filetype go nnoremap <silent><F5> :w <CR> :split term://go run % <CR> i
+
