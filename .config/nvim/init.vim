@@ -244,29 +244,30 @@ nnoremap <leader>P "+p
 "let g:airline#extensions#tabline#formatter = 'default'
 "let g:airline_symbols_ascii = 1
 "let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
-"---------------------------------------------------------------------------------
+"------You Complete me settings---------------------------------------------------
 "You complete me and ultisnips settings
-let g:ycm_global_ycm_extra_conf= '~/.vim/.ycm_global_ycm_extra_conf.py'
-set completeopt-=preview
+" let g:ycm_global_ycm_extra_conf= '~/.vim/.ycm_global_ycm_extra_conf.py'
+" set completeopt-=preview
 " let g:ycm_show_diagnostics_ui = 0
 " let g:ycm_enable_diagnostic_signs = 0
 " let g:ycm_enable_diagnostic_highlighting = 0
 " let g:ycm_echo_current_diagnostic = 0
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" " make YCM compatible with UltiSnips (using supertab)
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "---------------------------------------------------------------------------------
 "Nerdtree
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
+"-------------------------------------------------------------------
+
+" Better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 "---------------------------------------------------------------------------------
 "Deoplete
@@ -353,9 +354,11 @@ nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
 " Run specific language and compile it
-autocmd filetype c nnoremap <silent><F5> :w <CR> :split term://gcc % && ./a.out <CR> i
-autocmd filetype cpp nnoremap <silent><F5> :w <CR> :split term://g++ % && ./a.out <CR> i
-autocmd filetype python nnoremap <silent><F5> :w <CR> :split term://python % <CR> i
-autocmd filetype php nnoremap <silent><F5> :w <CR> :split term://php % <CR> i
-autocmd filetype go nnoremap <silent><F5> :w <CR> :split term://go run % <CR> i
+augroup run
+    autocmd filetype c nnoremap <silent><F5> :w <CR> :split term://gcc % && ./a.out <CR> i
+    autocmd filetype cpp nnoremap <silent><F5> :w <CR> :split term://g++ % && ./a.out <CR> i
+    autocmd filetype python nnoremap <silent><F5> :w <CR> :split term://python % <CR> i
+    autocmd filetype php nnoremap <silent><F5> :w <CR> :split term://php % <CR> i
+    autocmd filetype go nnoremap <silent><F5> :w <CR> :split term://go run % <CR> i
+augroup end
 
