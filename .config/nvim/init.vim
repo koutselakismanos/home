@@ -44,6 +44,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'tellijo/vim-react-native-snippets'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'ap/vim-css-color'
+Plug 'mattn/emmet-vim'
 
 "AutoCompletion
 Plug 'autozimu/LanguageClient-neovim', {
@@ -128,7 +129,6 @@ set encoding=utf-8
 
 "on search highlight instances
 set hlsearch
-
 
 "ex mode command completion
 set wildmenu
@@ -220,6 +220,64 @@ nnoremap <leader>f :FZF<CR>
 imap jk <Esc>
 imap JK <Esc>
 
+" Clear highlights
+nnoremap <leader>h :noh<CR>
+" Better highlights
+nnoremap <silent> <leader>h1 :execute 'match InterestingWord1' /\<<c-r><c-w>\>/'<cr>
+
+" " Source file
+nnoremap <leader>s :so %<CR> :noh<CR>
+
+" Asterisk highlighting
+nnoremap * *<C-o>
+
+" Better highlight while in v-mode
+function! s:VsetSearch()
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VsetSearch()<CR>//<CR><c-o>
+vnoremap # :<C-u>call <SID>VsetSearch()<CR>??<CR><c-o>
+
+"Folding-------- }}}
+set foldlevelstart=0
+
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent loadview
+" augroup END
+
+nnoremap zO zczO
+
+function! MyFoldText() " {{{
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+    " }}}
+
+"Remap tab to %
+" nnoremap <tab> %
+nnoremap <leader><tab> %
+
+"Keep search matches in the middle of the window and pulse the line when moving
+nnoremap n nzzzv
+nnoremap N Nzzzv
 
 "Easy align
 nmap ga <Plug>(EasyAlign)
@@ -361,4 +419,3 @@ augroup run
     autocmd filetype php nnoremap <silent><F5> :w <CR> :split term://php % <CR> i
     autocmd filetype go nnoremap <silent><F5> :w <CR> :split term://go run % <CR> i
 augroup end
-
