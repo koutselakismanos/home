@@ -215,10 +215,10 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Resize Windows
-nnoremap <C-Up> <C-W>-
-nnoremap <C-Down> <C-W>+
-nnoremap <C-Right> <C-W>>
-nnoremap <C-Left> <C-W><
+nnoremap <C-Up> 5<C-W>-
+nnoremap <C-Down> 5<C-W>+
+nnoremap <C-Right> 5<C-W>>
+nnoremap <C-Left> 5<C-W><
 
 nnoremap <F4> :NERDTreeToggle <CR>
 nnoremap <F8> :TagbarToggle<CR>
@@ -284,6 +284,7 @@ set foldtext=MyFoldText()
 "Remap tab to %
 " nnoremap <tab> %
 nnoremap <leader><tab> %
+vnoremap <leader><tab> %
 
 "Keep search matches in the middle of the window and pulse the line when moving
 nnoremap n nzzzv
