@@ -384,7 +384,7 @@ bindsym $mod+m bar mode toggle
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
   client.focused          #282a2e #282a2e #FFAF1B #268BD2 #FDF6E3
-  client.focused_inactive #282a2e #282a2e #FFAF1B #454948
+  client.focused_inactive #282a2e #282a2e #FFAF1B #454948 
   client.unfocused        #282a2e #1C1C1C #9E7426 #454948
   client.urgent           #CB4B16 #FDF6E3 #FFAF1B #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
@@ -396,7 +396,7 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 2 
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -405,7 +405,7 @@ gaps outer -2
 # gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
-smart_gaps on
+# smart_gaps on
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)

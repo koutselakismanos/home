@@ -163,11 +163,12 @@ autocmd filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "doesn't wrap lines
 set nowrap
 "convert tab to spaces
-set expandtab
-"show existing tab with 8 spaces
+" set expandtab
+"show existing tab with 4 spaces
 set tabstop=4
 "when indending with > or <, use 4 spaces
 set shiftwidth=4
+set softtabstop=4 " number of spaces in tab when editing
 
 set smarttab
 set splitright
@@ -191,8 +192,17 @@ set noerrorbells
 set pastetoggle=<F2>
 
 "Guide lines
-" set listchars=tab:\|\
-" set list
+set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+set list 
+
+" convert spaces to tabs when reading file
+autocmd! bufreadpost * set noexpandtab | retab! 4
+
+" convert tabs to spaces before writing file
+autocmd! bufwritepre * set expandtab | retab! 4
+
+" convert spaces to tabs after writing file (to show guides again)
+autocmd! bufwritepost * set noexpandtab | retab! 4
 
 "---------------------------------------------------------------------------------
 "Leader
@@ -245,13 +255,13 @@ vnoremap # :<C-u>call <SID>VsetSearch()<CR>??<CR><c-o>
 "Folding-------- }}}
 set foldlevelstart=0
 
-" augroup AutoSaveFolds
-"   autocmd!
-"   autocmd BufWinLeave * mkview
-"   autocmd BufWinEnter * silent loadview
-" augroup END
+augroup AutoSaveFolds
+    autocmd!
+    autocmd BufWinLeave * silent! mkview
+    autocmd BufWinEnter * silent! loadview
+augroup END
 
-nnoremap zO zczO
+nnoremap <leader>z zMzvzz
 
 function! MyFoldText() " {{{
     let line = getline(v:foldstart)
@@ -279,6 +289,15 @@ nnoremap <leader><tab> %
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+"Make sure vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+
 "Easy align
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
@@ -289,6 +308,10 @@ nnoremap <leader>p "*p
 nnoremap <leader>Y "+y
 nnoremap <leader>P "+p
 
+" Quick editing
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
+nnoremap <leader>ei :tabe ~/.config/i3/config<CR>
+nnoremap <leader>ez :tabe ~/.zshrc<CR>
 
 "---------------------------------------------------------------------------------
 ""Airline
@@ -315,18 +338,15 @@ nnoremap <leader>P "+p
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
-
 "---------------------------------------------------------------------------------
 "Nerdtree
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 "-------------------------------------------------------------------
-
 " Better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 "---------------------------------------------------------------------------------
 "Deoplete
 let g:deoplete#enable_at_startup=1
@@ -384,7 +404,6 @@ let g:deoplete#sources#ternjs#filetypes = [
              \ 'vue',
              \ '...'
              \ ]
-
 "----------------------------------------
 " Automatically start language servers.
 " let g:LanguageClient_autoStart = 1
