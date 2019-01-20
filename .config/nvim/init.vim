@@ -192,8 +192,8 @@ set noerrorbells
 set pastetoggle=<F2>
 
 "Guide lines
-set listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
-set list 
+set listchars=tab:\|·,trail:·,extends:»,precedes:«,nbsp:×
+" set listchars=tab:\|\ 
 
 " convert spaces to tabs when reading file
 autocmd! bufreadpost * set noexpandtab | retab! 4
@@ -232,8 +232,8 @@ imap JK <Esc>
 
 " Clear highlights
 nnoremap <leader>h :noh<CR>
-" Better highlights
-nnoremap <silent> <leader>h1 :execute 'match InterestingWord1' /\<<c-r><c-w>\>/'<cr>
+" " Better highlights
+" nnoremap <silent> <leader>h1 :execute 'match InterestingWord1' /\<<c-r><c-w>\>/'<cr>
 
 " " Source file
 nnoremap <leader>s :so %<CR> :noh<CR>
@@ -294,7 +294,7 @@ augroup line_return
     au!
     au BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
+        \    execute 'normal! g`"zvzz' |
         \ endif
 augroup END
 
@@ -430,6 +430,7 @@ nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
+"---------------------------------------------------------------------------------
 " Run specific language and compile it
 augroup run
     autocmd filetype c nnoremap <silent><F5> :w <CR> :split term://gcc % && ./a.out <CR> i
