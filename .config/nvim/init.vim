@@ -227,6 +227,8 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>f :FZF<CR>
 
+nnoremap <leader>; A;<ESC>
+
 " nnoremap <leader><leader> <leader><leader>s
 imap jk <Esc>
 imap JK <Esc>
