@@ -234,6 +234,13 @@ nnoremap <leader>; A;<ESC>
 imap jk <Esc>
 imap JK <Esc>
 
+
+"arrow keys keybindings
+" nnoremap <UP> ddkP
+" nnoremap <DOWN> ddp
+" nnoremap <LEFT> <<
+" nnoremap <RIGHT> >>
+
 " Clear highlights
 nnoremap <leader>h :noh<CR>
 " " Better highlights
