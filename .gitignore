@@ -10,3 +10,5 @@
 !.config/nvim
 !.config/termite
 !.install_arch.sh
+!.config/Code\ -\ OSS/User/keybindings.json
+!.config/Code\ -\ OSS/User/settings.json
