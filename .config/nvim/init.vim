@@ -25,7 +25,6 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-" Plug 'SearchComplete'
 Plug 'junegunn/fzf', {'dir': '~/.zzf', 'do': './install -all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -115,16 +114,6 @@ augroup cursorlinenrcolorswap
     autocmd cursorhold * call Resetcursorlinenrcolor()
 augroup END
 
-""this needs to be fixed
-" vnoremap <silent> <expr> <sid>Setcursorlinenrcolorvisual Setcursorlinenrcolorvisual()
-" vnoremap <silent> <expr> <sid>Setcursorlinenrcolorvisual Setcursorlinenrcolorvisual()
-" nnoremap <silent> <script> v v<sid>Setcursorlinenrcolorvisual
-" nnoremap <silent> <script> v v<sid>Setcursorlinenrcolorvisual
-" nnoremap <silent> <script> <c-v> <c-v><sid>Setcursorlinenrcolorvisual
-
-""set insert mode block cursor
-"set gcr=n:blinkon0
-"set gcr=i:blinkon0
 "---------------------------------------------------------------------------------
 
 set encoding=utf-8
