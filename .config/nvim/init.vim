@@ -77,7 +77,6 @@ set background=dark
 colorscheme apprentice
 set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
 
-
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
 function! Setcursorlinenrcolorinsert(mode) abort
@@ -92,14 +91,6 @@ function! Setcursorlinenrcolorinsert(mode) abort
         highlight cursorlinenr ctermfg=1 guifg=#dc322f
     endif
 endfunction
-
-""this needs to be fixed too
-" function! Setcursorlinenrcolorvisual() abort
-"     set updatetime=0
-
-"     " visual mode: orange
-"     highlight cursorlinenr cterm=none ctermfg=9 guifg=#cb4b16
-" endfunction
 
 function! Resetcursorlinenrcolor() abort
     set updatetime=4000
