@@ -425,9 +425,9 @@ nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 "---------------------------------------------------------------------------------
 " Run specific language and compile it
 augroup run
-    autocmd filetype c nnoremap <silent><F5> :w <CR> :split term://gcc % && ./a.out <CR> i
-    autocmd filetype cpp nnoremap <silent><F5> :w <CR> :split term://g++ % && ./a.out <CR> i
-    autocmd filetype python nnoremap <silent><F5> :w <CR> :split term://python % <CR> i
-    autocmd filetype php nnoremap <silent><F5> :w <CR> :split term://php % <CR> i
-    autocmd filetype go nnoremap <silent><F5> :w <CR> :split term://go run % <CR> i
+    autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i
+    autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i
+    autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i
+    autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
+    autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
 augroup end
