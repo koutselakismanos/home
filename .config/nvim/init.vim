@@ -13,7 +13,6 @@ call plug#begin('~/.vim/plugged')
 
 "Apperance
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/syntastic'
 Plug 'flazz/vim-colorschemes'
 " Plug 'yggdroot/indentline'
 Plug 'altercation/vim-colors-solarized'
@@ -28,7 +27,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', {'dir': '~/.zzf', 'do': './install -all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 "Motions
 Plug 'easymotion/vim-easymotion'
