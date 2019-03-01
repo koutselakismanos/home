@@ -73,7 +73,7 @@ set guioptions-=r "remove right-hand scroll bar
 set guioptions-=L "remove left-hand scrollbar
 set background=dark
 " colorscheme palenight
-colorscheme apprentice
+" colorscheme apprentice
 set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
 
 " Colorize line numbers in insert and visual modes
@@ -175,6 +175,8 @@ set pastetoggle=<F2>
 "Guide lines
 set listchars=tab:\|·,trail:·,extends:»,precedes:«,nbsp:×
 " set listchars=tab:\|\ 
+
+nnoremap <F3> :set list!<CR>
 
 " convert spaces to tabs when reading file
 autocmd! bufreadpost * set noexpandtab | retab! 4
