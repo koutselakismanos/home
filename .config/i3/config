@@ -7,6 +7,7 @@ set $left h
 set $right l
 set $down j
 set $up k
+set $terminal gnome-terminal
 
 # monitors
 set $monitorOne eDP
@@ -39,14 +40,16 @@ floating_modifier $mod
 # bindsym $mod+Return exec terminal
 # bindsym $mod+Return exec terminator
 # NEED TO INSTALL XCWD FOR THIS TO WORK
-bindsym $mod+Return exec termite /usr/bin/termite -d "$(xcwd)"
-bindsym $mod+Shift+Return exec termite /usr/bin/termite -d "$(xcwd)" --class floaty
+# bindsym $mod+Return exec termite /usr/bin/termite -d "$(xcwd)"
+bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec $terminal --class floaty
+# bindsym $mod+Shift+Return exec termite /usr/bin/termite -d "$(xcwd)" --class floaty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-#bindsym $mod+d exec --no-startup-id dmenu_recency
+# bindsym $mod+d exec --no-startup-id dmenu_recency
 bindsym $mod+d exec rofi -show
 bindsym $mod+Tab exec rofi -show window
 
@@ -57,22 +60,22 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
-bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio --start
+# exec --no-startup-id volumeicon
+# bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
+# exec --no-startup-id pulseaudio --start
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
 # Screen brightness controls
- bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
- bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec dolphin
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
 bindsym $mod+F5 exec terminal -e 'mocp'
@@ -210,6 +213,7 @@ workspace 4 output $monitorTwo
 # Open specific applications in floating mode
 for_window [class="floaty"]  floating enable border pixel 2, resize grow left 200,resize grow down 200, resize grow right 200, move down 200;
 for_window [title="Figure 1"] floating enable
+for_window [class="dolphin"] floating enable
 for_window [title="Figure 2"] floating enable
 for_window [class="Yad"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -236,7 +240,7 @@ for_window [class="Simple-scan"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
+# for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
 # switch to workspace with urgent window automatically
@@ -249,19 +253,21 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'gnome-session-quit --force --logout'"
 
 # Set shut down, restart and locking features
 bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+# set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+set $mode_system (e)xit, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
-    bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    # bindsym l exec --no-startup-id i3exit lock, mode "default"
+    # bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    # bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    # bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym e exec --no-startup-id gnome-session-quit --force --logout, mode "default"
     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    bindsym r exec --no-startup-id gnome-session-quit --force --reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id gnome-session-quit --force --power-off,mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -295,13 +301,16 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id gnome-flashback
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore;
+# exec --no-startup-id nitrogen --restore;
                                         #sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id pamac-tray
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
@@ -314,6 +323,7 @@ exec_always --no-startup-id /$HOME/.config/polybar/i3wmthemer_bar_launch.sh
 
 exec_always "setxkbmap -layout us,gr"
 exec_always "setxkbmap -option 'grp:alt_shift_toggle'"
+# exec --no-startup-id "setxkbmap -model pc105 -layout us,gr -option grp:alt_shift_toggle"
 
 exec_always "xrandr --output DisplayPort-3 --set underscan on"
 exec_always "xrandr --output DisplayPort-3 --set \"underscan hborder\" 50 --set \"underscan vborder\" 16"
@@ -352,33 +362,33 @@ set_from_resource $term_color14    color14
 set_from_resource $term_color15    color15
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
-#bar {
-#   i3bar_command i3bar
-#   status_command i3status
-#   position bottom
-#
-### please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-##  tray_output primary
-##  tray_output eDP1
-#
-#   bindsym button4 nop
-#   bindsym button5 nop
-##   font xft:URWGothic-Book 11
-#   strip_workspace_numbers yes
-#
-#    colors {
-#        background #222D31
-#        statusline #F9FAF9
-#        separator  #454947
-#
-##                      border  backgr. text
-#        focused_workspace  #F9FAF9 #16a085 #292F34
-#        active_workspace   #595B5B #353836 #FDF6E3
-#        inactive_workspace #595B5B #222D31 #EEE8D5
-#        binding_mode       #16a085 #2C2C2C #F9FAF9
-#        urgent_workspace   #16a085 #FDF6E3 #E5201D
-#    }
-#}
+bar {
+    i3bar_command i3bar
+    status_command i3status
+    position bottom
+
+## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+    tray_output primary
+    # tray_output eDP1
+
+    bindsym button4 nop
+    bindsym button5 nop
+#    font xft:URWGothic-Book 11
+    strip_workspace_numbers yes
+
+     colors {
+         background #222D31
+         statusline #F9FAF9
+         separator  #454947
+
+#                       border  backgr. text
+         focused_workspace  #F9FAF9 #16a085 #292F34
+         active_workspace   #595B5B #353836 #FDF6E3
+         inactive_workspace #595B5B #222D31 #EEE8D5
+         binding_mode       #16a085 #2C2C2C #F9FAF9
+         urgent_workspace   #16a085 #FDF6E3 #E5201D
+     }
+}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -398,8 +408,8 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 2 
-gaps outer -2
+# gaps inner 2 
+# gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -411,7 +421,7 @@ gaps outer -2
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace) 
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-smart_borders on
+# smart_borders on
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
