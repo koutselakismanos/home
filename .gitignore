@@ -4,6 +4,7 @@
 !.zshrc
 !.install_arch.sh
 !.config/i3
+!.config/awesome
 !.config/termite
 !.config/rofi
 !.config/polybar
