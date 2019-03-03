@@ -3,6 +3,7 @@
 !.gitignore
 !.zshrc
 !.install_arch.sh
+!.config/awesome
 !.config/i3
 !.config/termite
 !.config/rofi
@@ -10,4 +11,3 @@
 !.config/nitrogen
 !.config/nvim
 !.config/termite
-!.config/awesome
