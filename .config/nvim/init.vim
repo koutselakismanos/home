@@ -67,14 +67,16 @@ Plug 'sirver/ultisnips'
 call plug#end()
 
 "Gvim menu options and theme options
-set guioptions-=m "remove menu bar
-set guioptions-=T "remove toolbar
-set guioptions-=r "remove right-hand scroll bar
-set guioptions-=L "remove left-hand scrollbar
-set background=dark
+" set guioptions-=m "remove menu bar
+" set guioptions-=T "remove toolbar
+" set guioptions-=r "remove right-hand scroll bar
+" set guioptions-=L "remove left-hand scrollbar
+" set background=dark
 " colorscheme palenight
 " colorscheme apprentice
-set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
+colorscheme gruvbox
+" set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
+set guifont=Monospace:h12
 
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
@@ -212,9 +214,19 @@ nnoremap <leader>f :FZF<CR>
 nnoremap <leader>; A;<ESC>
 
 " nnoremap <leader><leader> <leader><leader>s
-imap jk <Esc>
-imap JK <Esc>
+imap jk <ESC>
+imap JK <ESC>
 
+" Use only one arrow for indendation
+nnoremap > >>
+nnoremap < <<
+
+" Press enter or shift enter for new lines
+nnoremap <CR> o<ESC>
+nnoremap <S-CR> O<ESC>
+
+" Insert mode delete like most text editors
+imap <C-Backspace> <C-w>
 
 "arrow keys keybindings
 " nnoremap <UP> ddkP
@@ -229,6 +241,7 @@ nnoremap <leader>h :noh<CR>
 
 " " Source file
 nnoremap <leader>s :so %<CR> :noh<CR>
+
 
 " Asterisk highlighting
 nnoremap * *<C-o>
