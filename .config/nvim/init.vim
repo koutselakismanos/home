@@ -225,6 +225,10 @@ nnoremap < <<
 nnoremap <CR> o<ESC>
 nnoremap <S-CR> O<ESC>
 
+" Flip buffers with arrow keys
+nnoremap <expr> <right> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bn\<cr>" : "\<right>")
+nnoremap <expr> <left> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bp\<cr>" : "\<left>")
+
 " Insert mode delete like most text editors
 imap <C-Backspace> <C-w>
 
