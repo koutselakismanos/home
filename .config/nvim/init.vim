@@ -1,9 +1,9 @@
 "Plug auto-install
-if 0
-    if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
-        call system(expand("mkdir -p ~/.config/nvim/autoload"))
-        call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
-    endif
+if 1
+  if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
+    call system(expand("mkdir -p ~/.config/nvim/autoload"))
+    call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
+  endif
 endif
 
 " Specify a directory for plugins
@@ -12,102 +12,108 @@ endif
 call plug#begin('~/.vim/plugged')
 
 "Apperance
-Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
-" Plug 'yggdroot/indentline'
-Plug 'altercation/vim-colors-solarized'
 Plug 'powerline/fonts'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'drewtempelmeyer/palenight.vim'
 
 "Windows and Features
+Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', {'dir': '~/.zzf', 'do': './install -all'}
+Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-" Plug 'scrooloose/syntastic'
+Plug 'ryanoasis/vim-devicons'
+" " Plug 'scrooloose/syntastic'
 
 "Motions
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-" Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
+Plug 'yuttie/comfortable-motion.vim'
+" " I Replaced vim-easymotion with vim-sneak
+" " Plug 'easymotion/vim-easymotion'
 
 "Language specific plugins
-" Plug 'mxw/vim-jsx'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'tellijo/vim-react-native-snippets'
-Plug 'hail2u/vim-css3-syntax'
+Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
+" " Plug 'mxw/vim-jsx'
+" Plug 'jelera/vim-javascript-syntax'
+" Plug 'tellijo/vim-react-native-snippets'
+" Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ },
-Plug 'honza/vim-snippets'
+" Plug 'autozimu/LanguageClient-neovim', {
+"  \ 'branch': 'next',
+"  \ 'do': 'bash install.sh',
+"  \ },
 Plug 'ervandew/supertab'
 if has('nvim')
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-    " Plug 'roxma/nvim-completion-manager'
+  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+  " Plug 'roxma/nvim-completion-manager'
 else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
-"---------------------------------------------------------------------------------
-" Initialize plugin system
 call plug#end()
 
-"Gvim menu options and theme options
-" set guioptions-=m "remove menu bar
-" set guioptions-=T "remove toolbar
-" set guioptions-=r "remove right-hand scroll bar
-" set guioptions-=L "remove left-hand scrollbar
-" set background=dark
+"---------------------------------------------------------------------------------
+
+""Gvim menu options and theme options
+"set guioptions-=m "remove menu bar
+"set guioptions-=T "remove toolbar
+"set guioptions-=r "remove right-hand scroll bar
+"set guioptions-=L "remove left-hand scrollbar
 " colorscheme palenight
 " colorscheme apprentice
+if exists('g:GtkGuiLoaded')
+  call rpcnotify(1, 'Gui', 'Font', 'UbuntuMono Nerd Font Mono')
+  call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+  call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+endif
+set background=dark
 colorscheme gruvbox
-" set guifont=Ubuntu_Mono:h13:cANSI:qDRAFT
-set guifont=Monospace:h12
 
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
 function! Setcursorlinenrcolorinsert(mode) abort
-    " insert mode: blue
-    if a:mode == "i"
-        highlight cursorlinenr ctermfg=10 guifg=green
-        highlight cursor ctermbg=10 guibg=green
+  " insert mode: blue
+  if a:mode == "i"
+    highlight cursorlinenr ctermfg=10 guifg=green
+    highlight cursor ctermbg=10 guibg=green
 
     " replace mode: red
-    elseif a:mode == "r"
-        highlight cursor ctermbg=1 guibg=#dc322f
-        highlight cursorlinenr ctermfg=1 guifg=#dc322f
-    endif
+  elseif a:mode == "r"
+    highlight cursor ctermbg=1 guibg=#dc322f
+    highlight cursorlinenr ctermfg=1 guifg=#dc322f
+  endif
 endfunction
 
 function! Resetcursorlinenrcolor() abort
-    set updatetime=4000
-    highlight cursorlinenr ctermfg=4 guifg=#268bd2
-    highlight cursor ctermbg=4 guibg=#268bd2
+  set updatetime=4000
+  highlight cursorlinenr ctermfg=4 guifg=#268bd2
+  highlight cursor ctermbg=4 guibg=#268bd2
 endfunction
 
 augroup cursorlinenrcolorswap
-    autocmd!
-    autocmd insertenter * call Setcursorlinenrcolorinsert(v:insertmode)
-    autocmd insertleave * call Resetcursorlinenrcolor()
-    autocmd cursorhold * call Resetcursorlinenrcolor()
+  autocmd!
+  autocmd insertenter * call Setcursorlinenrcolorinsert(v:insertmode)
+  autocmd insertleave * call Resetcursorlinenrcolor()
+  autocmd cursorhold * call Resetcursorlinenrcolor()
 augroup END
 
 "---------------------------------------------------------------------------------
 
+set encoding=UTF-8
+set backupdir=~/.vim/tmp " for the backup files
+set directory=~/.vim/tmp " for the swap files
 set encoding=utf-8
 
 "on search highlight instances
@@ -146,22 +152,23 @@ autocmd filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "doesn't wrap lines
 set nowrap
 "convert tab to spaces
-" set expandtab
-"show existing tab with 4 spaces
-set tabstop=4
+set expandtab
+" show existing tab with 4 spaces
+" set tabstop=2
 "when indending with > or <, use 4 spaces
-set shiftwidth=4
-set softtabstop=4 " number of spaces in tab when editing
+set shiftwidth=2
+set softtabstop=2 " number of spaces in tab when editing
 
-set smarttab
-set splitright
-set splitbelow
 
-"Auto indentation smart and more strict c indentation
-set autoindent
-" set smartindent
-set cindent
-set copyindent
+"set smarttab
+"set splitright
+"set splitbelow
+
+""Auto indentation smart and more strict c indentation
+"set autoindent
+"" set smartindent
+"set cindent
+"set copyindent
 
 "Show commands/letters i'm typing
 set showcmd
@@ -175,8 +182,9 @@ set noerrorbells
 set pastetoggle=<F2>
 
 "Guide lines
-set listchars=tab:\|·,trail:·,extends:»,precedes:«,nbsp:×
-" set listchars=tab:\|\ 
+" set listchars=space:\|·,trail:·,extends:»,precedes:«,nbsp:×
+" set listchars=space:·\,trail:·,extends:»,precedes:«,nbsp:×
+
 
 nnoremap <F3> :set list!<CR>
 
@@ -217,13 +225,9 @@ nnoremap <leader>; A;<ESC>
 imap jk <ESC>
 imap JK <ESC>
 
-" Use only one arrow for indendation
-nnoremap > >>
-nnoremap < <<
-
 " Press enter or shift enter for new lines
-nnoremap <CR> o<ESC>
-nnoremap <S-CR> O<ESC>
+map <CR> o<ESC>k
+map <s-CR> O<ESC>j
 
 " Flip buffers with arrow keys
 nnoremap <expr> <right> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bn\<cr>" : "\<right>")
@@ -232,30 +236,29 @@ nnoremap <expr> <left> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 
 " Insert mode delete like most text editors
 imap <C-Backspace> <C-w>
 
+
 "arrow keys keybindings
-" nnoremap <UP> ddkP
-" nnoremap <DOWN> ddp
-" nnoremap <LEFT> <<
-" nnoremap <RIGHT> >>
+nnoremap <UP> ddkP
+nnoremap <DOWN> ddp
 
 " Clear highlights
 nnoremap <leader>h :noh<CR>
-" " Better highlights
-" nnoremap <silent> <leader>h1 :execute 'match InterestingWord1' /\<<c-r><c-w>\>/'<cr>
 
 " " Source file
 nnoremap <leader>s :so %<CR> :noh<CR>
 
+" Emmet plugin
+imap jj <C-y>,
 
 " Asterisk highlighting
 nnoremap * *<C-o>
 
 " Better highlight while in v-mode
 function! s:VsetSearch()
-    let temp = @@
-    norm! gvy
-    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-    let @@ = temp
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
 endfunction
 
 vnoremap * :<C-u>call <SID>VsetSearch()<CR>//<CR><c-o>
@@ -265,30 +268,30 @@ vnoremap # :<C-u>call <SID>VsetSearch()<CR>??<CR><c-o>
 set foldlevelstart=0
 
 augroup AutoSaveFolds
-    autocmd!
-    autocmd BufWinLeave * silent! mkview
-    autocmd BufWinEnter * silent! loadview
+  autocmd!
+  autocmd BufWinLeave * silent! mkview
+  autocmd BufWinEnter * silent! loadview
 augroup END
 
 nnoremap <leader>z zMzvzz
 
 function! MyFoldText() " {{{
-    let line = getline(v:foldstart)
+  let line = getline(v:foldstart)
 
-    let nucolwidth = &fdc + &number * &numberwidth
-    let windowwidth = winwidth(0) - nucolwidth - 3
-    let foldedlinecount = v:foldend - v:foldstart
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
 
-    " expand tabs into spaces
-    let onetab = strpart('          ', 0, &tabstop)
-    let line = substitute(line, '\t', onetab, 'g')
+  " expand tabs into spaces
+  let onetab = strpart('            ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
 
-    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
-    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
-    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
-    " }}}
+" }}}
 
 "Remap tab to %
 " nnoremap <tab> %
@@ -301,8 +304,8 @@ nnoremap N Nzzzv
 
 "Make sure vim returns to the same line when you reopen a file.
 augroup line_return
-    au!
-    au BufReadPost *
+  au!
+  au BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \    execute 'normal! g`"zvzz' |
         \ endif
@@ -318,12 +321,12 @@ nnoremap <leader>p "*p
 nnoremap <leader>Y "+y
 nnoremap <leader>P "+p
 
-" Quick editing
+" Quick confi file editing
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>ei :tabe ~/.config/i3/config<CR>
 nnoremap <leader>ez :tabe ~/.zshrc<CR>
 
-"---------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------
 ""Airline
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline_powerline_fonts = 1
@@ -334,7 +337,7 @@ nnoremap <leader>ez :tabe ~/.zshrc<CR>
 "let g:airline_theme='dark'
 "let g:airline#extensions#tabline#formatter = 'default'
 "let g:airline_symbols_ascii = 1
-"let g:airline_section_z = airline#section#create(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
+"let g:airline_section_z = airline#section#ceeate(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 "------You Complete me settings---------------------------------------------------
 "You complete me and ultisnips settings
 " let g:ycm_global_ycm_extra_conf= '~/.vim/.ycm_global_ycm_extra_conf.py'
@@ -348,7 +351,9 @@ nnoremap <leader>ez :tabe ~/.zshrc<CR>
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
+
 "---------------------------------------------------------------------------------
+
 "Nerdtree
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
@@ -409,11 +414,11 @@ let g:deoplete#sources#ternjs#in_literal = 0
 
 " Add extra filetypes
 let g:deoplete#sources#ternjs#filetypes = [
-             \ 'jsx',
-             \ 'javascript.jsx',
-             \ 'vue',
-             \ '...'
-             \ ]
+  \ 'jsx',
+  \ 'javascript.jsx',
+  \ 'vue',
+  \ '...'
+  \ ]
 "----------------------------------------
 " Automatically start language servers.
 " let g:LanguageClient_autoStart = 1
