@@ -27,12 +27,13 @@ Plug 'ryanoasis/vim-devicons'
 " " Plug 'scrooloose/syntastic'
 
 "Motions
-Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'justinmk/vim-sneak'
 " " I Replaced vim-easymotion with vim-sneak
 " " Plug 'easymotion/vim-easymotion'
 
@@ -40,6 +41,7 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " " Plug 'mxw/vim-jsx'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'tellijo/vim-react-native-snippets'
@@ -51,6 +53,9 @@ Plug 'mattn/emmet-vim'
 "  \ 'do': 'bash install.sh',
 "  \ },
 Plug 'ervandew/supertab'
+Plug 'sirver/ultisnips'
+
+Plug 'honza/vim-snippets'
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
   " Plug 'roxma/nvim-completion-manager'
@@ -59,8 +64,6 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -71,8 +74,6 @@ call plug#end()
 "set guioptions-=T "remove toolbar
 "set guioptions-=r "remove right-hand scroll bar
 "set guioptions-=L "remove left-hand scrollbar
-" colorscheme palenight
-" colorscheme apprentice
 if exists('g:GtkGuiLoaded')
   call rpcnotify(1, 'Gui', 'Font', 'UbuntuMono Nerd Font Mono')
   call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
@@ -214,6 +215,7 @@ nnoremap <C-Right> 5<C-W>>
 nnoremap <C-Left> 5<C-W><
 
 nnoremap <F4> :NERDTreeToggle <CR>
+
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
@@ -226,8 +228,9 @@ imap jk <ESC>
 imap JK <ESC>
 
 " Press enter or shift enter for new lines
-map <CR> o<ESC>k
-map <s-CR> O<ESC>j
+" S-enter does not work in terminal Emulators, best used with gui intefaces
+nnoremap <Enter> moo<Esc>`o
+nnoremap <S-Enter> moO<Esc>`o
 
 " Flip buffers with arrow keys
 nnoremap <expr> <right> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bn\<cr>" : "\<right>")
@@ -236,16 +239,16 @@ nnoremap <expr> <left> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 
 " Insert mode delete like most text editors
 imap <C-Backspace> <C-w>
 
-
 "arrow keys keybindings
-nnoremap <UP> ddkP
-nnoremap <DOWN> ddp
+" Commented out because of accidental presses
+" nnoremap <UP> ddkP
+" nnoremap <DOWN> ddp
 
 " Clear highlights
 nnoremap <leader>h :noh<CR>
 
-" " Source file
-nnoremap <leader>s :so %<CR> :noh<CR>
+" Source file
+" nnoremap <leader>s :so %<CR> :noh<CR>
 
 " Emmet plugin
 imap jj <C-y>,
@@ -325,6 +328,10 @@ nnoremap <leader>P "+p
 nnoremap <leader>ev :tabe $MYVIMRC<CR>
 nnoremap <leader>ei :tabe ~/.config/i3/config<CR>
 nnoremap <leader>ez :tabe ~/.zshrc<CR>
+
+" Sneak mode
+nmap <leader>s <Plug>Sneak_s
+nmap <leader>S <Plug>Sneak_S
 
 "--------------------------------------------------------------------------------
 ""Airline
@@ -428,16 +435,16 @@ set hidden
 set completefunc=LanguageClient#complete
 
 let g:LanguageClient_rootMarkers = {
-    \ 'go': ['.git', 'go.mod'],
-    \ }
+  \ 'go': ['.git', 'go.mod'],
+  \ }
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
-    \ 'go': ['go-langserver', '-diagnostics', '-gocodecompletion', '-lint-tool',  'golint'],
-    \ }
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'python': ['pyls'],
+  \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+  \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+  \ 'go': ['go-langserver', '-diagnostics', '-gocodecompletion', '-lint-tool',  'golint'],
+  \ }
 
 nnoremap <F6> :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
@@ -448,9 +455,11 @@ nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 "---------------------------------------------------------------------------------
 " Run specific language and compile it
 augroup run
-    autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i
-    autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i
-    autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i
-    autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
-    autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
+  autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i
+  autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i
+  autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i
+  autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
+  autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
 augroup end
+
+"---------------------------------------------------------------------------------
