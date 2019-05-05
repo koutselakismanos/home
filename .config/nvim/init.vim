@@ -247,7 +247,7 @@ imap <C-Backspace> <C-w>
 " Clear highlights
 nnoremap <leader>h :noh<CR>
 
-" Source file
+" " Source file
 " nnoremap <leader>s :so %<CR> :noh<CR>
 
 " Emmet plugin
