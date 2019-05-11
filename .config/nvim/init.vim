@@ -248,7 +248,7 @@ imap <C-Backspace> <C-w>
 nnoremap <leader>h :noh<CR>
 
 " " Source file
-" nnoremap <leader>s :so %<CR> :noh<CR>
+nnoremap <leader>s :so %<CR> :noh<CR>
 
 " Emmet plugin
 imap jj <C-y>,
