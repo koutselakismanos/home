@@ -55,6 +55,18 @@
    "q" 'evil-quit
    "w" 'evil-write))
 
+(use-package lsp-mode
+  :ensure t
+  :commands lsp
+  :init)
+
+(use-package lsp-ui
+  :ensure t
+  :commands lsp-ui-mode)
+
+(use-package company-lsp
+  :ensure t
+  :commands company-lsp)
 
 (use-package key-chord
   :ensure t
@@ -80,8 +92,6 @@
 
 (global-set-key [f4] 'neotree-toggle)
 
-
-
 (define-key key-translation-map (kbd "ESC") (kbd "C-g"))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -90,7 +100,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-tabs use-package neotree markdown-mode helm evil-leader doom-themes))))
+    (company-lsp lsp-ui lsp-mode use-package spinner neotree markdown-mode key-chord ht helm f evil-tabs evil-leader doom-themes dash-functional company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
