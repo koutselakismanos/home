@@ -1,5 +1,5 @@
 "Plug auto-install
-if 1
+if 0
   if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
     call system(expand("mkdir -p ~/.config/nvim/autoload"))
     call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
@@ -14,6 +14,7 @@ call plug#begin('~/.vim/plugged')
 "Apperance
 Plug 'flazz/vim-colorschemes'
 Plug 'powerline/fonts'
+Plug 'drewtempelmeyer/palenight.vim'
 
 "Windows and Features
 Plug 'mhinz/vim-startify'
@@ -34,6 +35,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'justinmk/vim-sneak'
+Plug 'markonm/traces.vim'
+" Plug 'osyo-manga/vim-over'
 " " I Replaced vim-easymotion with vim-sneak
 " " Plug 'easymotion/vim-easymotion'
 
@@ -41,29 +44,30 @@ Plug 'justinmk/vim-sneak'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " " Plug 'mxw/vim-jsx'
 " Plug 'jelera/vim-javascript-syntax'
 " Plug 'tellijo/vim-react-native-snippets'
 " Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " Plug 'autozimu/LanguageClient-neovim', {
 "  \ 'branch': 'next',
 "  \ 'do': 'bash install.sh',
 "  \ },
-Plug 'ervandew/supertab'
-Plug 'sirver/ultisnips'
+" Plug 'ervandew/supertab'
+" Plug 'sirver/ultisnips'
 
-Plug 'honza/vim-snippets'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-  " Plug 'roxma/nvim-completion-manager'
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Plug 'honza/vim-snippets'
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+"   " Plug 'roxma/nvim-completion-manager'
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 call plug#end()
 
@@ -80,7 +84,7 @@ if exists('g:GtkGuiLoaded')
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 endif
 set background=dark
-colorscheme gruvbox
+colorscheme palenight
 
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
