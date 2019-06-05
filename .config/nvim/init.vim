@@ -1,5 +1,5 @@
 "Plug auto-install
-if 0
+if 1
   if(!isdirectory(expand("~/.config/nvim/autoload/plug.vim")))
     call system(expand("mkdir -p ~/.config/nvim/autoload"))
     call system(expand("curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"))
@@ -15,16 +15,18 @@ call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'powerline/fonts'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
 
 "Windows and Features
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'ryanoasis/vim-devicons'
+Plug 'junegunn/goyo.vim'
+" Plug 'ryanoasis/vim-devicons'
 " " Plug 'scrooloose/syntastic'
 
 "Motions
@@ -34,7 +36,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'markonm/traces.vim'
 " Plug 'osyo-manga/vim-over'
 " " I Replaced vim-easymotion with vim-sneak
@@ -44,6 +46,7 @@ Plug 'markonm/traces.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " " Plug 'mxw/vim-jsx'
 " Plug 'jelera/vim-javascript-syntax'
@@ -51,7 +54,7 @@ Plug 'mattn/emmet-vim'
 " Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install({'tag':1})}}
 " Plug 'autozimu/LanguageClient-neovim', {
 "  \ 'branch': 'next',
 "  \ 'do': 'bash install.sh',
@@ -83,8 +86,10 @@ if exists('g:GtkGuiLoaded')
   call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 endif
+set termguicolors
 set background=dark
-colorscheme palenight
+let ayucolor="dark"
+colorscheme ayu
 
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
@@ -338,6 +343,9 @@ nmap <leader>s <Plug>Sneak_s
 nmap <leader>S <Plug>Sneak_S
 
 "--------------------------------------------------------------------------------
+""Goyo
+
+"--------------------------------------------------------------------------------
 ""Airline
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline_powerline_fonts = 1
@@ -362,9 +370,17 @@ nmap <leader>S <Plug>Sneak_S
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
-
 "---------------------------------------------------------------------------------
+" Ale
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\}
+"---------------------------------------------------------------------------------
 "Nerdtree
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
@@ -465,5 +481,5 @@ augroup run
   autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
   autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
 augroup end
-
 "---------------------------------------------------------------------------------
+
