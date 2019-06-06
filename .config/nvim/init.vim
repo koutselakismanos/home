@@ -15,15 +15,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'flazz/vim-colorschemes'
 Plug 'powerline/fonts'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'ayu-theme/ayu-vim'
 
 "Windows and Features
 Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
 " " Plug 'scrooloose/syntastic'
 
@@ -32,10 +34,10 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'justinmk/vim-sneak'
 Plug 'markonm/traces.vim'
+" Plug 'justinmk/vim-sneak'
+" Plug 'yuttie/comfortable-motion.vim'
 " Plug 'osyo-manga/vim-over'
 " " I Replaced vim-easymotion with vim-sneak
 " " Plug 'easymotion/vim-easymotion'
@@ -44,6 +46,7 @@ Plug 'markonm/traces.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
+Plug 'w0rp/ale'
 " Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " " Plug 'mxw/vim-jsx'
 " Plug 'jelera/vim-javascript-syntax'
@@ -51,15 +54,15 @@ Plug 'mattn/emmet-vim'
 " Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install({'tag':1})}}
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 " Plug 'autozimu/LanguageClient-neovim', {
 "  \ 'branch': 'next',
 "  \ 'do': 'bash install.sh',
 "  \ },
 " Plug 'ervandew/supertab'
-" Plug 'sirver/ultisnips'
 
-" Plug 'honza/vim-snippets'
 " if has('nvim')
 "   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 "   " Plug 'roxma/nvim-completion-manager'
@@ -74,17 +77,19 @@ call plug#end()
 "---------------------------------------------------------------------------------
 
 ""Gvim menu options and theme options
-"set guioptions-=m "remove menu bar
-"set guioptions-=T "remove toolbar
-"set guioptions-=r "remove right-hand scroll bar
-"set guioptions-=L "remove left-hand scrollbar
-if exists('g:GtkGuiLoaded')
-  call rpcnotify(1, 'Gui', 'Font', 'UbuntuMono Nerd Font Mono')
-  call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
-  call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-endif
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r "remove right-hand scroll bar
+set guioptions-=L "remove left-hand scrollbar
+ if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'UbuntuMono Nerd Font Mono')
+    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+ endif
+set termguicolors
 set background=dark
-colorscheme palenight
+let ayucolor="mirage"
+colorscheme ayu
 
 " Colorize line numbers in insert and visual modes
 "---------------------------------------------------------------------------------
@@ -223,8 +228,25 @@ nnoremap <F4> :NERDTreeToggle <CR>
 nnoremap <F8> :TagbarToggle<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>f :FZF<CR>
+" FZF----------
+nmap <leader>f :GFiles<CR>
+nmap <leader>F :Files<CR>
 
+nmap <leader>b :Buffers<CR>
+
+nmap <leader>H :History<CR>
+nmap <leader>: :History:<CR>
+nmap <leader>/ :History/<CR>
+
+nmap <leader>C :Commands<Cr>
+
+nmap <leader>M :Maps<CR>
+
+nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
+
+nmap <leader>a :Ag<Space>
+" -------------
 nnoremap <leader>; A;<ESC>
 
 " nnoremap <leader><leader> <leader><leader>s
@@ -304,7 +326,6 @@ set foldtext=MyFoldText()
 " nnoremap <tab> %
 nnoremap <leader><tab> %
 vnoremap <leader><tab> %
-
 "Keep search matches in the middle of the window and pulse the line when moving
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -362,9 +383,17 @@ nmap <leader>S <Plug>Sneak_S
 " let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 " let g:SuperTabDefaultCompletionType = '<C-n>'
-
 "---------------------------------------------------------------------------------
+" Ale
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\}
+"---------------------------------------------------------------------------------
 "Nerdtree
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
@@ -465,5 +494,4 @@ augroup run
   autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
   autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
 augroup end
-
 "---------------------------------------------------------------------------------
