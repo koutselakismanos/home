@@ -1,5 +1,5 @@
 ## Options section
-setopt correct                                                  # Auto correct mistakes
+# setopt correct                                                    # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
 setopt nocaseglob                                               # Case insensitive globbing
 setopt rcexpandparam                                            # Array expension with parameters
@@ -53,6 +53,7 @@ bindkey '^H' backward-kill-word                                 # delete previou
 bindkey '^[[Z' undo                                             # Shift+tab undo last action
 
 ## Alias section 
+alias ls="ls --color=auto"
 alias cp="cp -i"                                                # Confirm before overwriting something
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
@@ -210,3 +211,5 @@ export PATH="$PATH:$GOPATH/bin"
 #----------------- ruby rbenv path
 export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
