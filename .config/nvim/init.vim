@@ -18,16 +18,15 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'ayu-theme/ayu-vim'
 
 "Windows and Features
-Plug 'mhinz/vim-startify'
 Plug 'bling/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'junegunn/goyo.vim'
 Plug 'ryanoasis/vim-devicons'
-" " Plug 'scrooloose/syntastic'
+" Plug 'mhinz/vim-startify'
+" Plug 'scrooloose/syntastic'
 
 "Motions
 Plug 'tpope/vim-surround'
@@ -36,56 +35,34 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'markonm/traces.vim'
-" Plug 'justinmk/vim-sneak'
-" Plug 'yuttie/comfortable-motion.vim'
-" Plug 'osyo-manga/vim-over'
-" " I Replaced vim-easymotion with vim-sneak
-" " Plug 'easymotion/vim-easymotion'
 
 "Language specific plugins
 Plug 'sheerun/vim-polyglot'
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
 Plug 'w0rp/ale'
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-" " Plug 'mxw/vim-jsx'
-" Plug 'jelera/vim-javascript-syntax'
-" Plug 'tellijo/vim-react-native-snippets'
-" Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax'
 
 "AutoCompletion
+" Plug 'ervandew/supertab'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install({'tag':1})}}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'autozimu/LanguageClient-neovim', {
-"  \ 'branch': 'next',
-"  \ 'do': 'bash install.sh',
-"  \ },
-" Plug 'ervandew/supertab'
-
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-"   " Plug 'roxma/nvim-completion-manager'
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
 call plug#end()
 
 "---------------------------------------------------------------------------------
 
 ""Gvim menu options and theme options
-set guioptions-=m "remove menu bar
-set guioptions-=T "remove toolbar
-set guioptions-=r "remove right-hand scroll bar
-set guioptions-=L "remove left-hand scrollbar
  if exists('g:GtkGuiLoaded')
     call rpcnotify(1, 'Gui', 'Font', 'UbuntuMono Nerd Font Mono')
     call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
     call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
  endif
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r "remove right-hand scroll bar
+set guioptions-=L "remove left-hand scrollbar
+set guifont=FuraCode\ Nerd\ Font\ 11
 set termguicolors
 set background=dark
 let ayucolor="mirage"
@@ -162,23 +139,15 @@ autocmd filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "doesn't wrap lines
 set nowrap
 "convert tab to spaces
-set expandtab
-" show existing tab with 4 spaces
-" set tabstop=2
-"when indending with > or <, use 4 spaces
-set shiftwidth=2
-set softtabstop=2 " number of spaces in tab when editing
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 
-
-"set smarttab
-"set splitright
-"set splitbelow
+set splitright
 
 ""Auto indentation smart and more strict c indentation
 "set autoindent
 "" set smartindent
 "set cindent
-"set copyindent
+set copyindent
 
 "Show commands/letters i'm typing
 set showcmd
@@ -192,8 +161,15 @@ set noerrorbells
 set pastetoggle=<F2>
 
 "Guide lines
-" set listchars=space:\|·,trail:·,extends:»,precedes:«,nbsp:×
-" set listchars=space:·\,trail:·,extends:»,precedes:«,nbsp:×
+" set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+
+if has('gui_running')
+  set list listchars=tab:▶‒,nbsp:∙,trail:∙,extends:▶,precedes:◀
+  let &showbreak = '↳'
+else
+  set list listchars=tab:>-,nbsp:.,trail:.,extends:>,precedes:<
+  let &showbreak = '^'
+endif
 
 
 nnoremap <F3> :set list!<CR>
@@ -247,6 +223,7 @@ nmap <leader>T :Tags<CR>
 
 nmap <leader>a :Ag<Space>
 " -------------
+
 nnoremap <leader>; A;<ESC>
 
 " nnoremap <leader><leader> <leader><leader>s
@@ -326,6 +303,7 @@ set foldtext=MyFoldText()
 " nnoremap <tab> %
 nnoremap <leader><tab> %
 vnoremap <leader><tab> %
+
 "Keep search matches in the middle of the window and pulse the line when moving
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -355,34 +333,21 @@ nnoremap <leader>ei :tabe ~/.config/i3/config<CR>
 nnoremap <leader>ez :tabe ~/.zshrc<CR>
 
 " Sneak mode
-nmap <leader>s <Plug>Sneak_s
-nmap <leader>S <Plug>Sneak_S
+" nmap <leader>s <Plug>Sneak_s
+" nmap <leader>S <Plug>Sneak_S
 
 "--------------------------------------------------------------------------------
-""Airline
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline_powerline_fonts = 1
-"let g:Powerline_symbols='unicode'
-"let g:airline_left_sep = "\uE0B0"
-"let g:airline_right_sep = "\uE0B2"
+"Airline
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline_powerline_fonts = 1
+" let g:Powerline_symbols='unicode'
+" let g:airline_left_sep = "\uE0B0"
+" let g:airline_right_sep = "\uE0B2"
 
-"let g:airline_theme='dark'
-"let g:airline#extensions#tabline#formatter = 'default'
-"let g:airline_symbols_ascii = 1
-"let g:airline_section_z = airline#section#ceeate(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
-"------You Complete me settings---------------------------------------------------
-"You complete me and ultisnips settings
-" let g:ycm_global_ycm_extra_conf= '~/.vim/.ycm_global_ycm_extra_conf.py'
-" set completeopt-=preview
-" let g:ycm_show_diagnostics_ui = 0
-" let g:ycm_enable_diagnostic_signs = 0
-" let g:ycm_enable_diagnostic_highlighting = 0
-" let g:ycm_echo_current_diagnostic = 0
-
-" " make YCM compatible with UltiSnips (using supertab)
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:airline_theme='dark'
+" let g:airline#extensions#tabline#formatter = 'default'
+" let g:airline_symbols_ascii = 1
+" let g:airline_section_z = airline#section#ceeate(["\uE0A1" . '%{line(".")}' . "\uE0A3" . '%{col(".")}'])
 "---------------------------------------------------------------------------------
 " Ale
 let g:ale_sign_error = '✘'
@@ -403,62 +368,62 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "---------------------------------------------------------------------------------
-"Deoplete
-let g:deoplete#enable_at_startup=1
+""Deoplete
+"let g:deoplete#enable_at_startup=1
 
-" Whether to include the types of the completions in the result data. Default: 0
-let g:deoplete#sources#ternjs#types = 1
+"" Whether to include the types of the completions in the result data. Default: 0
+"let g:deoplete#sources#ternjs#types = 1
 
-" Whether to include the distance (in scopes for variables, in prototypes for 
-" properties) between the completions and the origin position in the result 
-" data. Default: 0
-let g:deoplete#sources#ternjs#depths = 1
+"" Whether to include the distance (in scopes for variables, in prototypes for 
+"" properties) between the completions and the origin position in the result 
+"" data. Default: 0
+"let g:deoplete#sources#ternjs#depths = 1
 
-" Whether to include documentation strings (if found) in the result data.
-" Default: 0
-let g:deoplete#sources#ternjs#docs = 1
+"" Whether to include documentation strings (if found) in the result data.
+"" Default: 0
+"let g:deoplete#sources#ternjs#docs = 1
 
-" When on, only completions that match the current word at the given point will
-" be returned. Turn this off to get all results, so that you can filter on the 
-" client side. Default: 1
-let g:deoplete#sources#ternjs#filter = 0
+"" When on, only completions that match the current word at the given point will
+"" be returned. Turn this off to get all results, so that you can filter on the 
+"" client side. Default: 1
+"let g:deoplete#sources#ternjs#filter = 0
 
-" Whether to use a case-insensitive compare between the current word and 
-" potential completions. Default 0
-let g:deoplete#sources#ternjs#case_insensitive = 1
+"" Whether to use a case-insensitive compare between the current word and 
+"" potential completions. Default 0
+"let g:deoplete#sources#ternjs#case_insensitive = 1
 
-" When completing a property and no completions are found, Tern will use some 
-" heuristics to try and return some properties anyway. Set this to 0 to 
-" turn that off. Default: 1
-let g:deoplete#sources#ternjs#guess = 0
+"" When completing a property and no completions are found, Tern will use some 
+"" heuristics to try and return some properties anyway. Set this to 0 to 
+"" turn that off. Default: 1
+"let g:deoplete#sources#ternjs#guess = 0
 
-" Determines whether the result set will be sorted. Default: 1
-let g:deoplete#sources#ternjs#sort = 0
+"" Determines whether the result set will be sorted. Default: 1
+"let g:deoplete#sources#ternjs#sort = 0
 
-" When disabled, only the text before the given position is considered part of 
-" the word. When enabled (the default), the whole variable name that the cursor
-" is on will be included. Default: 1
-let g:deoplete#sources#ternjs#expand_word_forward = 0
+"" When disabled, only the text before the given position is considered part of 
+"" the word. When enabled (the default), the whole variable name that the cursor
+"" is on will be included. Default: 1
+"let g:deoplete#sources#ternjs#expand_word_forward = 0
 
-" Whether to ignore the properties of Object.prototype unless they have been 
-" spelled out by at least two characters. Default: 1
-let g:deoplete#sources#ternjs#omit_object_prototype = 0
+"" Whether to ignore the properties of Object.prototype unless they have been 
+"" spelled out by at least two characters. Default: 1
+"let g:deoplete#sources#ternjs#omit_object_prototype = 0
 
-" Whether to include JavaScript keywords when completing something that is not 
-" a property. Default: 0
-let g:deoplete#sources#ternjs#include_keywords = 1
+"" Whether to include JavaScript keywords when completing something that is not 
+"" a property. Default: 0
+"let g:deoplete#sources#ternjs#include_keywords = 1
 
-" If completions should be returned when inside a literal. Default: 1
-let g:deoplete#sources#ternjs#in_literal = 0
+"" If completions should be returned when inside a literal. Default: 1
+"let g:deoplete#sources#ternjs#in_literal = 0
 
 
-" Add extra filetypes
-let g:deoplete#sources#ternjs#filetypes = [
-  \ 'jsx',
-  \ 'javascript.jsx',
-  \ 'vue',
-  \ '...'
-  \ ]
+"" Add extra filetypes
+"let g:deoplete#sources#ternjs#filetypes = [
+"  \ 'jsx',
+"  \ 'javascript.jsx',
+"  \ 'vue',
+"  \ '...'
+"  \ ]
 "----------------------------------------
 " Automatically start language servers.
 " let g:LanguageClient_autoStart = 1
