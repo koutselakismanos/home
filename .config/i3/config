@@ -2,9 +2,9 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # gnome spesific settings
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
-exec --no-startup-id gnome-flashback
+# exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+# exec_always --no-startup-id gnome-power-manager
+# exec --no-startup-id gnome-flashback
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
@@ -15,8 +15,8 @@ set $up k
 set $terminal gnome-terminal
 
 # monitors
-set $monitorOne eDP
-set $monitorTwo DisplayPort-3
+# set $monitorOne eDP
+# set $monitorTwo DisplayPort-3
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -48,13 +48,13 @@ floating_modifier $mod
 # bindsym $mod+Return exec $terminal /usr/bin/termite -d "$(xcwd)"
 # bindsym $mod+Shift+Return exec $terminal /usr/bin/termite -d "$(xcwd)" --class floaty
 bindsym $mod+Return exec $terminal
-bindsym $mod+Shift+Return exec $terminal
+bindsym $mod+Shift+Return exec $terminal --class floaty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-# bindsym $mod+d exec --no-startup-id dmenu_recency
+# bindsym $mod+d exec --no-startup-id dmenu_recenc
  bindsym $mod+d exec rofi -show
 
 # launch categorized menu
@@ -64,14 +64,14 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-#exec --no-startup-id volumeicon
+exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio --start
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
 
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 
 
 ################################################################################################
@@ -83,12 +83,8 @@ bindsym $mod+z exec --no-startup-id morc_menu
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 bindsym $mod+F2 exec google-chrome-stable
-bindsym $mod+F3 exec pcmanfm
+bindsym $mod+F3 exec nautilus --class floaty
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
 # bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
@@ -219,7 +215,7 @@ workspace 3 output $monitorOne
 workspace 4 output $monitorTwo
 
 # Open specific applications in floating mode
-for_window [class="floaty"]  floating enable border pixel 2, resize grow left 200,resize grow down 200, resize grow right 200, move down 200;
+for_window [class="floaty"]  floating enable border pixel 2
 for_window [title="Figure 1"] floating enable
 for_window [title="Figure 2"] floating enable
 for_window [class="Yad"] floating enable

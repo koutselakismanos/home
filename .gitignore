@@ -3,6 +3,7 @@
 !.gitignore
 !.zshrc
 !.install_arch.sh
+!.install_ubuntu.sh
 !.config/i3
 !.config/awesome
 !.config/termite
