@@ -1,4 +1,3 @@
-// Place your key bindings in this file to overwrite the defaults
 [
     {
         "key": "ctrl+h",
@@ -43,5 +42,20 @@
         "key": "ctrl+shift+n",
         "command": "explorer.newFolder",
         "when": "explorerViewletFocus"
+    },
+    {
+        "key": "alt+enter",
+        "command": "editor.action.quickFix",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
     }
 ]
