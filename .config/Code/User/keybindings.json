@@ -1,0 +1,59 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+h",
+        "command": "gitlens.views.repositories:scm.focus"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusNextGroup"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.nextEditorInGroup",
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.previousEditorInGroup",
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    // This does not work because ctrl+j is a new line on terminal.
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.previousEditorInGroup",
+    },
+    {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "listFocus"
+    },
+    {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus"
+    },
+    {
+        "key": "enter",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        "key": "f4",
+        "command": "workbench.files.action.focusFilesExplorer",
+    },
+    {
+        "key": "o",
+        "command": "list.toggleExpand",
+        "when": "listFocus"
+    }
+
+]

@@ -1,0 +1,116 @@
+{
+    "workbench.colorTheme": "One Dark Pro Bold",
+    "editor.fontFamily": "Ubuntu Mono",
+    "editor.fontSize": 14,
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "space",
+    "vim.handleKeys": {
+        "C-a": false,
+        "C-f": false,
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                ";",
+            ],
+            "after":[
+                "A",
+                ";",
+                "ESC",
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                ",",
+            ],
+            "after":[
+                "A",
+                ",",
+                "ESC",
+            ]
+        },
+        {
+            "before": [
+                "Z",
+                "Z"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                },
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "q"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "esc"
+            ],
+        },
+        {
+            "before": [
+                "J",
+                "K"
+            ],
+            "after": [
+                "esc"
+            ]
+        }
+    ],
+    "breadcrumbs.enabled": true,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "window.zoomLevel": 0,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.list.automaticKeyboardNavigation": false,
+    "editor.tabSize": 2,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+    },
+    "explorer.openEditors.visible": 0,
+    "editor.minimap.renderCharacters": false,
+    "editor.renderWhitespace": "all",
+
+}
