@@ -1,0 +1,148 @@
+{
+    "workbench.colorTheme": "One Dark Pro Bold",
+    "editor.fontFamily": "Ubuntu Mono",
+    "editor.fontSize": 15,
+    "editor.fontWeight": "100",
+    "vim.easymotion": true,
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.leader": "space",
+    "vim.handleKeys": {
+        "C-a": false,
+        "C-f": false,
+    },
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "*",
+            ],
+            "after": [
+                "*",
+                "ctrl+o",
+            ],
+        },
+        {
+            "before": [
+                "leader",
+                "l",
+                "r",
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.rename",
+                    "args": [],
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                ";",
+            ],
+            "after": [
+                "A",
+                ";",
+                "ESC",
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                ",",
+            ],
+            "after": [
+                "A",
+                ",",
+                "ESC",
+            ]
+        },
+        {
+            "before": [
+                "Z",
+                "Z"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                },
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "q"
+            ],
+            "commands": [
+                {
+                    "command": "workbench.action.closeActiveEditor",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "esc"
+            ],
+        },
+        {
+            "before": [
+                "J",
+                "K"
+            ],
+            "after": [
+                "esc"
+            ]
+        }
+    ],
+    "breadcrumbs.enabled": true,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "window.zoomLevel": 1,
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.list.automaticKeyboardNavigation": false,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "HTML (Eex)": "html",
+    },
+    "emmet.syntaxProfiles": {
+        "html": "xhtml",
+    },
+    "explorer.openEditors.visible": 0,
+    "editor.minimap.renderCharacters": false,
+    "editor.renderWhitespace": "boundary",
+    //  --------------------------------------------
+    "editor.insertSpaces": true,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+}

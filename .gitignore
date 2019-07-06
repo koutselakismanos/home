@@ -2,13 +2,15 @@
 !.bashrc
 !.gitignore
 !.zshrc
+!.emacs
 !.install_arch.sh
+!.install_ubuntu.sh
+
 !.config/i3
 !.config/awesome
 !.config/termite
 !.config/rofi
 !.config/polybar
 !.config/nitrogen
+!.config/Code/User
 !.config/nvim
-!.config/termite
-!.emacs
