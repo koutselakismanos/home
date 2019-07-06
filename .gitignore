@@ -12,6 +12,10 @@
 !.config/nitrogen
 !.config/nvim
 !.config/termite
-!.config/Code/User/keybindings.json
-!.config/Code/User/settings.json
 !.emacs
+
+.config/*
+!.config/Code
+
+.config/Code/*
+!.config/Code/User
