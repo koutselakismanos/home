@@ -139,7 +139,7 @@
     },
     "explorer.openEditors.visible": 0,
     "editor.minimap.renderCharacters": false,
-    "editor.renderWhitespace": "all",
+    "editor.renderWhitespace": "boundary",
     //  --------------------------------------------
     "editor.insertSpaces": true,
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
