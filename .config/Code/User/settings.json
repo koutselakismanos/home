@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "One Dark Pro Bold",
     "editor.fontFamily": "Ubuntu Mono",
-    "editor.fontSize": 14,
+    "editor.fontSize": 15,
     "vim.easymotion": true,
     "vim.sneak": true,
     "vim.incsearch": true,
