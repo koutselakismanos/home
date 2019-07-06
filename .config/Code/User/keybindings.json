@@ -34,4 +34,14 @@
         "key": "f4",
         "command": "workbench.files.action.focusFilesExplorer",
     },
+    {
+        "key": "ctrl+n",
+        "command": "explorer.newFile",
+        "when": "explorerViewletFocus",
+    },
+    {
+        "key": "ctrl+shift+n",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletFocus"
+    }
 ]
