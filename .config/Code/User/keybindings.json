@@ -8,12 +8,16 @@
         "command": "workbench.action.focusNextGroup"
     },
     {
-        "key": "ctrl+k",
-        "command": "workbench.action.nextEditorInGroup",
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditorInGroup"
     },
     {
-        "key": "ctrl+j",
+        "key": "ctrl+shift+tab",
         "command": "workbench.action.previousEditorInGroup",
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor"
     },
     {
         "key": "ctrl+tab",
