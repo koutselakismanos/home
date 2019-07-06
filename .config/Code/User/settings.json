@@ -16,6 +16,28 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                "*",
+            ],
+            "after": [
+                "*",
+                "ctrl+o",
+            ],
+        },
+        {
+            "before": [
+                "leader",
+                "l",
+                "r",
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.rename",
+                    "args": [],
+                }
+            ]
+        },
+        {
+            "before": [
                 "leader",
                 ";",
             ],
@@ -108,9 +130,19 @@
     "editor.tabSize": 2,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
+        "HTML (Eex)": "html",
+    },
+    "emmet.syntaxProfiles": {
+        "html": "xhtml",
     },
     "explorer.openEditors.visible": 0,
     "editor.minimap.renderCharacters": false,
     "editor.renderWhitespace": "all",
 
+//  --------------------------------------------
+
+    "editor.insertSpaces": true,
+    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+    "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
 }
