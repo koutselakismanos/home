@@ -10,12 +10,7 @@
 !.config/rofi
 !.config/polybar
 !.config/nitrogen
+!.config/Code
 !.config/nvim
 !.config/termite
 !.emacs
-
-.config/*
-!.config/Code
-
-.config/Code/*
-!.config/Code/User
