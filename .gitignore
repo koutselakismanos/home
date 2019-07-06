@@ -1,4 +1,4 @@
-*
+/*
 !.bashrc
 !.gitignore
 !.zshrc
@@ -10,7 +10,7 @@
 !.config/rofi
 !.config/polybar
 !.config/nitrogen
-!.config/Code
+!.config/Code/User
 !.config/nvim
 !.config/termite
 !.emacs
