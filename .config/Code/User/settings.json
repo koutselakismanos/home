@@ -41,7 +41,7 @@
                 "leader",
                 ";",
             ],
-            "after":[
+            "after": [
                 "A",
                 ";",
                 "ESC",
@@ -52,7 +52,7 @@
                 "leader",
                 ",",
             ],
-            "after":[
+            "after": [
                 "A",
                 ",",
                 "ESC",
@@ -122,12 +122,13 @@
     "breadcrumbs.enabled": true,
     "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.list.automaticKeyboardNavigation": false,
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
+    "editor.detectIndentation": false,
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "HTML (Eex)": "html",
@@ -138,9 +139,7 @@
     "explorer.openEditors.visible": 0,
     "editor.minimap.renderCharacters": false,
     "editor.renderWhitespace": "all",
-
-//  --------------------------------------------
-
+    //  --------------------------------------------
     "editor.insertSpaces": true,
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
     "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
