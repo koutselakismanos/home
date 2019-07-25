@@ -10,7 +10,7 @@ apt upgrade -y
 apt install build-essential vim-gtk3 neovim google-chrome-stable i3 pavucontrol rofi alsamixer compton -y
 
 # rice
-apt install nitrogen
+apt install nitrogen volumeicon
 
 # Optional
 apt install python python3
