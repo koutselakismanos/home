@@ -6,7 +6,7 @@
     "vim.easymotion": true,
     "vim.sneak": true,
     "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
+    "vim.useSystemClipboard": false,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.leader": "space",
@@ -109,7 +109,6 @@
             "after": [
                 "esc"
             ],
-
         },
         {
             "before": [
@@ -123,27 +122,27 @@
     ],
     "breadcrumbs.enabled": true,
     "workbench.activityBar.visible": true,
-    "workbench.statusBar.visible": false,
-    "window.zoomLevel": 1,
+    "workbench.statusBar.visible": true,
+    "window.zoomLevel": 0,
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.list.automaticKeyboardNavigation": false,
-    "editor.tabSize": 4,
+    "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact",
-        "HTML (Eex)": "html",
-    },
     "emmet.syntaxProfiles": {
+        "HTML (EEx)": "html",
         "html": "xhtml",
     },
+    "emmet.includeLanguages": {
+        "HTML (EEx)": "html",
+        "javascript": "javascriptreact",
+    },
+    "emmet.showSuggestionsAsSnippets": true,
     "explorer.openEditors.visible": 0,
     "editor.minimap.renderCharacters": false,
     "editor.renderWhitespace": "boundary",
-
     //  --------------------------------------------
-
     "editor.insertSpaces": true,
     "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
     "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
@@ -155,4 +154,11 @@
     "zenMode.hideTabs": false,
     "editor.lineNumbers": "relative",
     "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorCustomizations": {},
+    "material-icon-theme.folders.color": "#26a69a",
+    "material-icon-theme.folders.theme": "specific",
+    "material-icon-theme.opacity": 1,
+    "material-icon-theme.saturation": 1,
+    "material-icon-theme.activeIconPack": "react_redux",
+    "editor.minimap.enabled": false,
 }

@@ -9,6 +9,9 @@ apt upgrade -y
 # Essentials
 apt install build-essential vim-gtk3 neovim google-chrome-stable i3 pavucontrol rofi alsamixer compton -y
 
+# rice
+apt install nitrogen
+
 # Optional
 apt install python python3
 
