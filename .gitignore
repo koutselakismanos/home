@@ -9,6 +9,7 @@
 !.config/i3
 !.config/awesome
 !.config/termite
+!.config/dunst
 !.config/rofi
 !.config/polybar
 !.config/nitrogen
