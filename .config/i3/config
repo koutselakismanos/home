@@ -202,7 +202,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 #Open applications on specific workspaces
 assign [class="Slack"] $ws8
-# assign [class="Thunderbird"] $ws1
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
@@ -218,6 +217,7 @@ assign [class="Slack"] $ws8
 for_window [class="floaty"]  floating enable border pixel 2, resize grow left 100,resize grow down 100, resize grow right 100, move down 100;
 for_window [class="Yad"] floating enable
 for_window [class="Nautilus" instance="nautilus"] floating enable
+for_window [class="Code" instance="code"] border pixel 0
 for_window [class="Eog" instance="eog"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
