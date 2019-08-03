@@ -3,22 +3,22 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-apt update -y
-apt upgrade -y
+# apt update -y
+# apt upgrade -y
 
 # Essentials
-apt install build-essential vim-gtk3 neovim google-chrome-stable i3 pavucontrol rofi alsamixer compton -y
+apt install build-essential vim-gtk3 neovim google-chrome-stable i3 i3status pavucontrol -y
 
 # rice
-apt install nitrogen volumeicon
+apt install nitrogen dunst rofi compton -y
 
 # Optional
-apt install python python3
+apt install python python3 -y
 
 
-# Polybar installation
-apt install build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev -y
-apt install libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y
-git clone https://github.com/polybar/polybar.git ~/Downloads/Polybar
-cd ~/Downloads/Polybar
-yes | ./build.sh
+# # Polybar installation
+# apt install build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev -y
+# apt install libxcb-xkb-dev libxcb-xrm-dev libxcb-cursor-dev libasound2-dev libpulse-dev i3-wm libjsoncpp-dev libmpdclient-dev libcurl4-openssl-dev libnl-genl-3-dev -y
+# git clone https://github.com/polybar/polybar.git ~/Downloads/Polybar
+# compton d ~/Downloads/Polybar
+# yes | ./build.sh

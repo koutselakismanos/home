@@ -155,7 +155,7 @@ max_icon_size = 80
 icon_path = /usr/share/icons/Adwaita/16x16/mimetypes/:/usr/share/icons/Adwaita/48x48/status/:/usr/share/icons/Adwaita/16x16/devices/:/usr/share/icons/Adwaita/48x48/notifications/:/usr/share/icons/Adwaita/48x48/emblems/
 
 frame_width = 1
-frame_color = black
+frame_color = #000000
 
 [shortcuts]
 
@@ -179,23 +179,23 @@ history = ctrl+shift+grave
 # context = ctrl+shift+,
 
 [urgency_low]
-frame_color = "black"
+frame_color = "#000000"
 foreground = "#FED4A2"
-background = "black"
+background = "#000000"
 timeout = 6
 
 [urgency_normal]
-frame_color = "black"
-foreground = "#FED4A2"
-background = "black"
+frame_color = "#000000"
+foreground = "#000000"
+background = "#A7554C"
 timeout = 8
 
 
 [urgency_critical]
 # IMPORTANT: colors have to be defined in quotation marks.
 # Otherwise the "#" and following would be interpreted as a comment.
-frame_color = "black"
-foreground = "black"
+frame_color = "#000000"
+foreground = "#000000"
 background = "#FEA533"
 timeout = 10
 
