@@ -186,9 +186,10 @@ timeout = 6
 
 [urgency_normal]
 frame_color = "black"
-foreground = "black"
-background = "#A7554C"
+foreground = "#FED4A2"
+background = "black"
 timeout = 8
+
 
 [urgency_critical]
 # IMPORTANT: colors have to be defined in quotation marks.
