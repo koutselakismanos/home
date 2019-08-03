@@ -5,6 +5,7 @@
 !.emacs
 !.install_arch.sh
 !.install_ubuntu.sh
+!.vimrc
 
 !.config/i3
 !.config/awesome
