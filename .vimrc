@@ -29,7 +29,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
-" Plug 'sirver/ultisnips'
+Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
 call plug#end()
@@ -51,6 +51,10 @@ nnoremap <C-Up> 5<C-W>-
 nnoremap <C-Down> 5<C-W>+
 nnoremap <C-Right> 5<C-W>>
 nnoremap <C-Left> 5<C-W><
+
+"
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 set mouse=a
 
@@ -101,22 +105,36 @@ nnoremap <S-Enter> moO<Esc>`o
 map <F4> :Explore<CR>
 set number
 set relativenumber
-set wildmenu
-set ignorecase
+
+"ex mode command completion  
+set wildmenu  
+
+"complete search pattern by pressing enter and cancel with esc  
+set incsearch 
+
+"search ignore capital letters  
+set ignorecase  
+set smartcase 
+
+set splitright  
 
 " Sneak mode
 nmap <leader>s <Plug>Sneak_s
 nmap <leader>S <Plug>Sneak_S
 
+set timeoutlen=300
+
 " Guide lines
-" set listchars=space:·\,trail:·,extends:»,precedes:«,nbsp:×
 set list
-set listchars=trail:·,extends:»,precedes:«,nbsp:×
+set listchars=trail:-,space:·
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 " Show commands/letters i'm typing
 set showcmd
+
+"on search highlight instances  
+set hlsearch  
 
 set backspace=indent,eol,start
 set history=1000
@@ -139,7 +157,7 @@ let ayucolor="mirage"
 colorscheme ayu
 " set background=light
 " colorscheme onedark
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Ubuntu\ Mono\ 13
 
 
 " Colorize line numbers in insert and visual modes
@@ -227,16 +245,16 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -255,3 +273,8 @@ let g:gitgutter_sign_removed_first_line = '▔'
 let g:gitgutter_sign_modified_removed = '▋'
 
 autocmd BufWritePost * GitGutter
+
+" Better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
