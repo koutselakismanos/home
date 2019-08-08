@@ -21,8 +21,10 @@ Plug 'tpope/vim-commentary'
 Plug 'justinmk/vim-sneak'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
+
 Plug 'airblade/vim-gitgutter'
 Plug 'markonm/traces.vim'
+Plug 'scrooloose/nerdtree'
 
 " Language
 Plug 'sheerun/vim-polyglot'
@@ -36,6 +38,7 @@ call plug#end()
 
 vnoremap <C-c> "+y
 vnoremap <C-v> "+p
+imap <C-v> <C-o>"+p
 
 "Leader
 let mapleader = "\<space>"
@@ -67,6 +70,7 @@ nnoremap <leader>, A,<ESC>
 " nnoremap <leader><leader> <leader><leader>s
 imap jk <ESC>
 imap JK <ESC>
+
 
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
@@ -102,9 +106,25 @@ nnoremap <leader>P "+p
 nnoremap <Enter> moo<Esc>`o
 nnoremap <S-Enter> moO<Esc>`o
 
-map <F4> :Explore<CR>
+function! NerdTreeToggler()
+  if &filetype == 'nerdtree'
+    :NERDTreeToggle
+  elseif &filetype == ''
+    :NERDTreeToggle
+  else
+    :NERDTreeFind
+  endif
+endfunction
+
+
+" map <F4> :Explore<CR>
+map <F4> :call NerdTreeToggler()<CR>
+map <S-F4> :NERDTreeToggle<CR>
+
 set number
 set relativenumber
+
+set nowrap
 
 "ex mode command completion  
 set wildmenu  
@@ -121,8 +141,6 @@ set splitright
 " Sneak mode
 nmap <leader>s <Plug>Sneak_s
 nmap <leader>S <Plug>Sneak_S
-
-set timeoutlen=300
 
 " Guide lines
 set list
@@ -245,16 +263,16 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -263,9 +281,6 @@ nmap <leader>lr <Plug>(coc-rename)
 
 " Plugin: GitGutter
 let g:gitgutter_map_keys = 0
-" let g:gitgutter_sign_added = '▎'
-" let g:gitgutter_sign_modified = '▎'
-" let g:gitgutter_sign_removed = '▏'
 let g:gitgutter_sign_added = '▎'
 let g:gitgutter_sign_modified = '▎'
 let g:gitgutter_sign_removed = '▎'
@@ -274,7 +289,26 @@ let g:gitgutter_sign_modified_removed = '▋'
 
 autocmd BufWritePost * GitGutter
 
-" Better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<NUL>"
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandSnippetOrReturn()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    return "\<CR>"
+  endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+
+" Run specific language and compile it  
+augroup run 
+  autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i 
+  autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i 
+  autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i  
+  autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i  
+  autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i  
+  autocmd filetype markdown nnoremap <silent><F5> :w <CR>k :!google-chrome %<CR>
+augroup end 
