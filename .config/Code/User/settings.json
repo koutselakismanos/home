@@ -1,164 +1,199 @@
 {
   "editor.fontFamily": "Ubuntu Mono",
-    "editor.fontSize": 15,
-    "editor.fontWeight": "100",
-    "vim.easymotion": true,
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": false,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.leader": "space",
-    "vim.handleKeys": {
-        "C-a": false,
-        "C-f": false,
-    },
-    "vim.normalModeKeyBindingsNonRecursive": [
+  "editor.fontSize": 15,
+  "editor.fontWeight": "100",
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": false,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "space",
+  "vim.handleKeys": {
+    "C-a": false,
+    "C-f": false,
+  },
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "c",
+        "l",
+      ],
+      "commands": [
         {
-            "before": [
-                "*",
-            ],
-            "after": [
-                "*",
-                "ctrl+o",
-            ],
-        },
-        {
-            "before": [
-                "leader",
-                "l",
-                "r",
-            ],
-            "commands": [
-                {
-                    "command": "editor.action.rename",
-                    "args": [],
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                ";",
-            ],
-            "after": [
-                "A",
-                ";",
-                "ESC",
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                ",",
-            ],
-            "after": [
-                "A",
-                ",",
-                "ESC",
-            ]
-        },
-        {
-            "before": [
-                "Z",
-                "Z"
-            ],
-            "commands": [
-                {
-                    "command": "workbench.action.files.save",
-                    "args": []
-                },
-                {
-                    "command": "workbench.action.closeActiveEditor",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "w"
-            ],
-            "commands": [
-                {
-                    "command": "workbench.action.files.save",
-                    "args": []
-                }
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "q"
-            ],
-            "commands": [
-                {
-                    "command": "workbench.action.closeActiveEditor",
-                    "args": []
-                }
-            ]
+          "command": "turboConsoleLog.displayLogMessage",
+          "args": [],
         }
-    ],
-    "vim.insertModeKeyBindingsNonRecursive": [
+      ]
+    },
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "l",
+        "h",
+      ],
+      "commands": [
         {
-            "before": [
-                "j",
-                "k"
-            ],
-            "after": [
-                "esc"
-            ],
+          "command": "editor.action.showHover",
+          "args": [],
+        }
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        "l",
+        "r",
+      ],
+      "commands": [
+        {
+          "command": "editor.action.rename",
+          "args": [],
+        }
+      ]
+    },
+    {
+      "before": [
+        "*",
+      ],
+      "after": [
+        "*",
+        "ctrl+o",
+      ],
+    },
+    {
+      "before": [
+        "leader",
+        ";",
+      ],
+      "after": [
+        "A",
+        ";",
+        "ESC",
+      ]
+    },
+    {
+      "before": [
+        "leader",
+        ",",
+      ],
+      "after": [
+        "A",
+        ",",
+        "ESC",
+      ]
+    },
+    {
+      "before": [
+        "Z",
+        "Z"
+      ],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
         },
         {
-            "before": [
-                "J",
-                "K"
-            ],
-            "after": [
-                "esc"
-            ]
+          "command": "workbench.action.closeActiveEditor",
+          "args": []
         }
-    ],
-    "breadcrumbs.enabled": true,
-    "workbench.activityBar.visible": true,
-    "workbench.statusBar.visible": true,
-    "window.zoomLevel": 0,
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.list.automaticKeyboardNavigation": false,
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "emmet.syntaxProfiles": {
-        "HTML (EEx)": "html",
-        "html": "xhtml",
+      ]
     },
-    "emmet.includeLanguages": {
-        "HTML (EEx)": "html",
-        "javascript": "javascriptreact",
+    {
+      "before": [
+        "leader",
+        "w"
+      ],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        }
+      ]
     },
-    "emmet.showSuggestionsAsSnippets": true,
-    "explorer.openEditors.visible": 0,
-    "editor.minimap.renderCharacters": false,
-    "editor.renderWhitespace": "boundary",
-    //  --------------------------------------------
-    "editor.insertSpaces": true,
-    "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
-    "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
-    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false,
-    "workbench.editor.showTabs": true,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideTabs": false,
-    "editor.lineNumbers": "relative",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorCustomizations": {},
-    "material-icon-theme.folders.color": "#26a69a",
-    "material-icon-theme.folders.theme": "specific",
-    "material-icon-theme.opacity": 1,
-    "material-icon-theme.saturation": 1,
-    "material-icon-theme.activeIconPack": "react_redux",
-    "editor.minimap.enabled": false,
-    "workbench.colorTheme": "One Dark Pro",
+    {
+      "before": [
+        "leader",
+        "q"
+      ],
+      "commands": [
+        {
+          "command": "workbench.action.closeActiveEditor",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "esc"
+      ],
+    },
+    {
+      "before": [
+        "J",
+        "K"
+      ],
+      "after": [
+        "esc"
+      ]
+    }
+  ],
+  "breadcrumbs.enabled": true,
+  "workbench.activityBar.visible": true,
+  "workbench.statusBar.visible": true,
+  "window.zoomLevel": 0,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.list.automaticKeyboardNavigation": false,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "emmet.syntaxProfiles": {
+    "HTML (Eex)": "html",
+    "HTML (EEx)": "html",
+    "html": "xhtml",
+  },
+  "emmet.includeLanguages": {
+    "HTML (Eex)": "html",
+    "HTML (EEx)": "html",
+    "javascript": "javascriptreact",
+  },
+  "emmet.showSuggestionsAsSnippets": true,
+  "explorer.openEditors.visible": 0,
+  "editor.minimap.renderCharacters": false,
+  "editor.renderWhitespace": "boundary",
+  //  --------------------------------------------
+  "editor.insertSpaces": true,
+  "javascript.format.placeOpenBraceOnNewLineForControlBlocks": false,
+  "javascript.format.placeOpenBraceOnNewLineForFunctions": false,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideTabs": false,
+  "editor.lineNumbers": "relative",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorCustomizations": {},
+  "material-icon-theme.folders.color": "#26a69a",
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.opacity": 1,
+  "material-icon-theme.saturation": 1,
+  "material-icon-theme.activeIconPack": "react_redux",
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "One Dark Pro Bold",
+
+  "turboConsoleLog.wrapLogMessage": true,
+  "turboConsoleLog.insertEnclosingFunction": false,
+  "turboConsoleLog.insertEnclosingClass": false,
+  "turboConsoleLog.logMessagePrefix": "Log",
+  "turboConsoleLog.quote": "'",
 }

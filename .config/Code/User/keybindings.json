@@ -57,5 +57,33 @@
         "key": "ctrl+p",
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
-    }
+    },
+    {
+      "key": "ctrl+right",
+      "command": "workbench.action.increaseViewSize",
+    },
+    {
+      "key": "ctrl+left",
+      "command": "workbench.action.decreaseViewSize",
+    },
+    {
+      "key": "ctrl+up",
+      "command": "workbench.action.terminal.resizePaneUp",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+down",
+      "command": "workbench.action.terminal.resizePaneDown",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+left",
+      "command": "workbench.action.terminal.resizePaneLeft",
+      "when": "terminalFocus"
+    },
+    {
+      "key": "ctrl+right",
+      "command": "workbench.action.terminal.resizePaneRight",
+      "when": "terminalFocus"
+    },
 ]
