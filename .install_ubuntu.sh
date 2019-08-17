@@ -10,7 +10,7 @@ apt upgrade -y
 apt install build-essential vim-gtk3 neovim google-chrome-stable i3 i3status pavucontrol -y
 
 # rice
-apt install nitrogen dunst rofi compton -y
+apt install nitrogen dunst rofi compton fonts-font-awesome -y
 
 # Optional
 apt install python python3 -y
