@@ -36,6 +36,8 @@ height = 27
 radius = 0
 fixed-center = false
 
+bottom= true
+
 background = ${colors.background}
 foreground = ${colors.foreground}
 
@@ -57,7 +59,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
 ; modules-center = mpd
-modules-right = filesystem xbacklight alsa pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem xbacklight alsa memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 1
