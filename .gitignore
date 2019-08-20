@@ -4,6 +4,7 @@
 !.zshrc
 !.emacs
 !.install_arch.sh
+!.deprecated_install_arch.sh
 !.install_ubuntu.sh
 !.vimrc
 
