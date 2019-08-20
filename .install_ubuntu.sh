@@ -7,7 +7,7 @@ apt update -y
 apt upgrade -y
 
 # Essentials
-apt install build-essential vim-gtk3 neovim google-chrome-stable i3 i3status pavucontrol -y
+apt install build-essential vim-gtk3 neovim google-chrome-stable i3 i3status pavucontrol clipit -y
 
 # rice
 apt install nitrogen dunst rofi compton fonts-font-awesome -y
