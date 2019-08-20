@@ -2,6 +2,7 @@
   "editor.fontFamily": "Ubuntu Mono",
   "editor.fontSize": 15,
   "editor.fontWeight": "100",
+  "vim.enableNeovim": true,
   "vim.easymotion": true,
   "vim.sneak": true,
   "vim.incsearch": true,
@@ -9,11 +10,26 @@
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
   "vim.leader": "space",
+  "vim.foldfix": true,
   "vim.handleKeys": {
     "C-a": false,
     "C-f": false,
   },
   "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "l",
+        "h"
+      ],
+      "commands": [
+        {
+          "command": "extension.dash.specific",
+          "args": [],
+        }
+
+      ]
+    },
     {
       "before": [
         "leader",
@@ -29,6 +45,20 @@
     },
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "leader",
+        "z",
+      ],
+      "after": [
+        "z",
+        "M",
+        "z",
+        "O",
+        "z",
+        "z"
+      ]
+    },
     {
       "before": [
         "leader",
@@ -190,10 +220,5 @@
   "material-icon-theme.activeIconPack": "react_redux",
   "editor.minimap.enabled": false,
   "workbench.colorTheme": "One Dark Pro Bold",
-
-  "turboConsoleLog.wrapLogMessage": true,
-  "turboConsoleLog.insertEnclosingFunction": false,
-  "turboConsoleLog.insertEnclosingClass": false,
-  "turboConsoleLog.logMessagePrefix": "Log",
-  "turboConsoleLog.quote": "'",
+  "workbench.editor.showTabs": true,
 }
