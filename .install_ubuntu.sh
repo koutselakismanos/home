@@ -1,5 +1,5 @@
 if [ "$EUID" -ne 0 ]
-  then echo "Please run as root..."
+then echo "Please run as root..."
   exit
 fi
 
@@ -10,11 +10,10 @@ apt upgrade -y
 apt install build-essential vim-gtk3 neovim google-chrome-stable i3 i3status pavucontrol clipit -y
 
 # rice
-apt install nitrogen dunst rofi compton fonts-font-awesome -y
+apt install nitrogen dunst rofi compton fonts-font-awesome terminator -y
 
 # Optional
 apt install python python3 -y
-
 
 # Polybar installation
 apt install build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev -y

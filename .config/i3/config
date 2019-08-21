@@ -7,7 +7,7 @@ set $left h
 set $right l
 set $down j
 set $up k
-set $terminal gnome-terminal 
+set $terminal terminator
 # monitors
 # set $monitorOne eDP
 # set $monitorTwo DisplayPort-3
@@ -222,6 +222,7 @@ for_window [class="Eog" instance="eog"] floating enable
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [class="calamares"] floating enable border normal
 for_window [class="Clipgrab"] floating enable
+for_window [class="Zeal"] floating enable
 for_window [title="File Transfer*"] floating enable
 for_window [class="Galculator"] floating enable border pixel 1
 for_window [class="GParted"] floating enable border normal
