@@ -19,11 +19,14 @@ font-2 = Termsynu:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
 modules-left = powermenu mpd
-modules-right = volume backlight wireless-network wired-network battery date
+modules-right = volume backlight wireless-network wired-network battery1 battery2 date
 
 [bar/bottom]
 # monitor = eDP-1
 bottom = true
+tray-position = right
+
+
 width = 100%
 height = 27
 
@@ -45,7 +48,7 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
 
-modules-left = i3
+modules-left = i3-t
 modules-right = cpu memory
 
 [module/backlight]
@@ -67,9 +70,45 @@ bar-empty = ─
 bar-empty-font = 3
 bar-empty-foreground = #44
 
-[module/battery]
+[module/battery1]
 type = internal/battery
 full-at = 98
+
+battery = BAT1
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <ramp-capacity> <label-full>
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = #f53c3c
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = #ffa900
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+bar-capacity-width = 10
+bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
+bar-capacity-fill = █
+bar-capacity-fill-foreground = #ddffffff
+bar-capacity-fill-font = 3
+bar-capacity-empty = █
+bar-capacity-empty-font = 3
+bar-capacity-empty-foreground = #44ffffff
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/battery2]
+type = internal/battery
+full-at = 98
+
+battery = BAT0
 
 format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
@@ -102,61 +141,67 @@ animation-charging-framerate = 750
 [module/i3]
 type = internal/i3
 
-ws-icon-0 = term;
-ws-icon-1 = web;
-ws-icon-2 = code;
-ws-icon-3 = music;
-ws-icon-4 = irssi;
-ws-icon-default = 
+# ws-icon-0 = 1;
+# ws-icon-1 = 2;
+# ws-icon-2 = 3;
+# ws-icon-3 = 4;
+# ws-icon-4 = 5;
+# ws-icon-default = 
 
 format = <label-state> <label-mode>
 
-label-dimmed-underline = ${BAR.background}
+label-mode-padding = 4
+label-mode-background = #e60053
 
-label-active = %icon%
-label-active-foreground = #fff
-label-active-background = #773f3f3f
-label-active-underline = #c9665e
-label-active-font = 4
-label-active-padding = 4
+label-focused-background = #ffffff
+label-focused-foreground = #000000
 
-label-occupied = %icon%
-label-occupied-foreground = #dd
-label-occupied-underline = #666
-label-occupied-font = 4
-label-occupied-padding = 4
+# label-dimmed-underline = ${BAR.background}
 
-label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
+# label-active = %icon%
+# label-active-foreground = #fff
+# label-active-background = #773f3f3f
+# label-active-underline = #c9665e
+# label-active-font = 4
+# label-active-padding = 4
 
-label-empty = %icon%
-label-empty-foreground = #55
-label-empty-font = 4
-label-empty-padding = 4
+# label-occupied = %icon%
+# label-occupied-foreground = #dd
+# label-occupied-underline = #666
+# label-occupied-font = 4
+# label-occupied-padding = 4
 
-label-monocle = 
-label-monocle-underline = ${module/i3.label-active-underline}
-label-monocle-background = #33ffffff
-label-monocle-padding = 2
+# label-urgent = %icon%
+# label-urgent-foreground = #000000
+# label-urgent-background = #bd2c40
+# label-urgent-underline = #9b0a20
+# label-urgent-font = 4
+# label-urgent-padding = 4
 
-label-locked = 
-label-locked-foreground = #bd2c40
-label-locked-underline = ${module/i3.label-monocle-underline}
-label-locked-padding = ${module/i3.label-monocle-padding}
+# label-empty = %icon%
+# label-empty-foreground = #55
+# label-empty-font = 4
+# label-empty-padding = 4
 
-label-sticky = 
-label-sticky-foreground = #fba922
-label-sticky-underline = ${module/i3.label-monocle-underline}
-label-sticky-padding = ${module/i3.label-monocle-padding}
+# label-monocle = 
+# label-monocle-underline = ${module/i3.label-active-underline}
+# label-monocle-background = #33ffffff
+# label-monocle-padding = 2
 
-label-private = 
-label-private-foreground = #bd2c40
-label-private-underline = ${module/i3.label-monocle-underline}
-label-private-padding = ${module/i3.label-monocle-padding}
+# label-locked = 
+# label-locked-foreground = #bd2c40
+# label-locked-underline = ${module/i3.label-monocle-underline}
+# label-locked-padding = ${module/i3.label-monocle-padding}
+
+# label-sticky = 
+# label-sticky-foreground = #fba922
+# label-sticky-underline = ${module/i3.label-monocle-underline}
+# label-sticky-padding = ${module/i3.label-monocle-padding}
+
+# label-private = 
+# label-private-foreground = #bd2c40
+# label-private-underline = ${module/i3.label-monocle-underline}
+# label-private-padding = ${module/i3.label-monocle-padding}
 
 [module/i3-tmp]
 type = internal/i3
@@ -226,7 +271,7 @@ bar-used-empty-foreground = #444444
 
 [module/mpd]
 type = internal/mpd
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time><label-song>
 
 icon-play = 
 icon-pause = 
@@ -285,15 +330,6 @@ label-disconnected-foreground = #66
 [module/volume]
 type = internal/alsa
 
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-
-master-mixer = Master
-speaker-mixer = Speaker
-headphone-mixer = Headphone
-headphone-id = 9
-
 format-volume = <ramp-volume> <label-volume>
 label-muted =   muted
 label-muted-foreground = #66
@@ -341,3 +377,46 @@ interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
 ; vim:ft=dosini
+
+[module/i3-t]
+type = internal/i3
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Sort the workspaces by index instead of the default
+; sorting that groups the workspaces by output
+; Default: false
+index-sort = true
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
