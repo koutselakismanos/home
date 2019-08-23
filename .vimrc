@@ -1,45 +1,139 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-" Customization
-" Plug 'flazz/vim-colorschemes'
-Plug 'ayu-theme/ayu-vim'
-Plug 'joshdick/onedark.vim'
 
+"Apperance
+Plug 'flazz/vim-colorschemes'
 
-" Useful
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-surround'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'tpope/vim-commentary'
-Plug 'justinmk/vim-sneak'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-fugitive'
-
-Plug 'airblade/vim-gitgutter'
-Plug 'markonm/traces.vim'
+"Windows and Features
+Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'markonm/traces.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons'
+Plug 'yggdroot/indentline'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 
-" Language
+"Motions
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/vim-easy-align'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'justinmk/vim-sneak'
+
+"Language specific plugins
 Plug 'sheerun/vim-polyglot'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ap/vim-css-color'
 Plug 'mattn/emmet-vim'
+
+"AutoCompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
-
 call plug#end()
+"---------------------------------------------------------------------------------
 
-vnoremap <C-c> "+y
-vnoremap <C-v> "+p
-imap <C-v> <C-o>"+p
+set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r "remove right-hand scroll bar
+set guioptions-=L "remove left-hand scrollbar
+set guioptions-=e "remove tabs
 
+set guifont=FuraCode\ Nerd\ Font\ 11
+set termguicolors
+set background=dark
+colorscheme gruvbox
+
+" Colorize line numbers in insert and visual modes
+"---------------------------------------------------------------------------------
+set encoding=UTF-8
+" set backupdir=~/.vim/tmp " for the backup files
+" set directory=~/.vim/tmp " for the swap files
+set directory=~/.vim/swapfiles//
+
+"on search highlight instances
+set hlsearch
+
+"ex mode command completion
+set wildmenu
+
+"search ignore capital letters
+set ignorecase
+set smartcase
+
+"complete search pattern by pressing enter and cancel with esc
+set incsearch
+
+"display line number
+set number
+
+set completeopt-=preview
+
+"display line relative to position
+set relativenumber
+
+" Scroll padding
+set scrolloff=5
+"mouse cursor in terminal
+set mouse=a
+
+"better clipboard
+set clipboard+=unnamedplus
+
+"each time a new or existing file is edited,
+"vim will try to recognize the type of the file and set the 'filetype' option.
+"this will trigger the filetype event, which can be used to set the syntax highlighting,
+"set options, etc.
+filetype plugin indent on
+syntax on
+autocmd filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+"doesn't wrap lines
+set nowrap
+
+""convert tab to spaces
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+
+set splitright
+
+"Show commands/letters i'm typing
+set showcmd
+
+set backspace=indent,eol,start
+set history=1000
+set undolevels=1000
+set title
+set visualbell
+set noerrorbells
+set pastetoggle=<F2>
+
+"Guide lines
+set list
+set listchars=trail:·
+nnoremap <F3> :set list!<CR>
+
+set clipboard+=unnamedplus
+
+" " convert spaces to tabs when reading file
+" autocmd! bufreadpost * set noexpandtab | retab! 2
+
+" convert tabs to spaces before writing file
+autocmd! bufwritepre * set expandtab | retab! 2
+" " convert spaces to tabs after writing file (to show guides again)
+" autocmd! bufwritepost * set noexpandtab | retab! 2
+
+"---------------------------------------------------------------------------------
 "Leader
 let mapleader = "\<space>"
 
@@ -49,62 +143,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+map <C-Tab> gt
+map <C-S-Tab> gT
+
 "Resize Windows
 nnoremap <C-Up> 5<C-W>-
 nnoremap <C-Down> 5<C-W>+
 nnoremap <C-Right> 5<C-W>>
 nnoremap <C-Left> 5<C-W><
-
-"
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
-
-set mouse=a
-
-" Add semicolon in the end of the file
-nnoremap <leader>; A;<ESC>
-
-" Add comma in the end of the file
-nnoremap <leader>, A,<ESC>
-
-" nnoremap <leader><leader> <leader><leader>s
-imap jk <ESC>
-imap JK <ESC>
-
-
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-
-map <C-Tab> gt
-map <C-S-Tab> gT
-
-" Asterisk highlighting
-nnoremap * *<C-o>
-
-" Insert mode delete like most text editors
-imap <C-BS> <C-w>
-
-"Keep search matches in the middle of the window and pulse the line when moving
-nnoremap n nzzzv
-nnoremap N Nzzzv
-
-" Clear highlights
-nnoremap <leader>h :noh<CR>
-
-"Easy align
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
-"Better copy paste
-nnoremap <leader>y "*y
-nnoremap <leader>p "*p
-nnoremap <leader>Y "+y
-nnoremap <leader>P "+p
-
-" Press enter or shift enter for new lines
-" S-enter does not work in terminal Emulators, best used with gui intefaces
-nnoremap <Enter> moo<Esc>`o
-nnoremap <S-Enter> moO<Esc>`o
 
 function! NerdTreeToggler()
   if &filetype == 'nerdtree'
@@ -117,130 +163,141 @@ function! NerdTreeToggler()
 endfunction
 
 
-" map <F4> :Explore<CR>
 map <F4> :call NerdTreeToggler()<CR>
 map <S-F4> :NERDTreeToggle<CR>
 
-set number
-set relativenumber
+nnoremap <F8> :TagbarToggle<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
 
-set nowrap
+let g:sneak#label = 1
 
-"ex mode command completion  
-set wildmenu  
-
-"complete search pattern by pressing enter and cancel with esc  
-set incsearch 
-
-"search ignore capital letters  
-set ignorecase  
-set smartcase 
-
-set splitright  
-
-" Sneak mode
-nmap <leader>s <Plug>Sneak_s
-nmap <leader>S <Plug>Sneak_S
-
-" Guide lines
-set list
-set listchars=trail:-,space:·
-
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
-
-" Show commands/letters i'm typing
-set showcmd
-
-"on search highlight instances  
-set hlsearch  
-
-set backspace=indent,eol,start
-set history=1000
-set undolevels=1000
-set title
-set visualbell
-set noerrorbells
-set pastetoggle=<F2>
-
-""Gvim menu options and theme options
-set guioptions-=m "remove menu bar
-set guioptions-=T "remove toolbar
-set guioptions-=r "remove right-hand scroll bar
-set guioptions-=L "remove left-hand scrollbar
-set guioptions-=e "remove gui tabs
-set belloff=all
-
-set termguicolors
-let ayucolor="mirage"
-colorscheme ayu
-" set background=light
-" colorscheme onedark
-set guifont=Ubuntu\ Mono\ 13
-
-
-" Colorize line numbers in insert and visual modes
-"---------------------------------------------------------------------------------
-function! Setcursorlinenrcolorinsert(mode) abort
-  " insert mode: blue
-  if a:mode == "i"
-    highlight cursorlinenr ctermfg=10 guifg=green
-    highlight cursor ctermbg=10 guibg=green
-
-    " replace mode: red
-  elseif a:mode == "r"
-    highlight cursor ctermbg=1 guibg=#dc322f
-    highlight cursorlinenr ctermfg=1 guifg=#dc322f
-  endif
-endfunction
-
-function! Resetcursorlinenrcolor() abort
-  set updatetime=4000
-  highlight cursorlinenr ctermfg=4 guifg=#268bd2
-  highlight cursor ctermbg=4 guibg=#268bd2
-endfunction
-
-augroup cursorlinenrcolorswap
-  autocmd!
-  autocmd insertenter * call Setcursorlinenrcolorinsert(v:insertmode)
-  autocmd insertleave * call Resetcursorlinenrcolor()
-  autocmd cursorhold * call Resetcursorlinenrcolor()
-augroup END
-
-"---------------------------------------------------------------------------------
-" Emmet
-imap jj <C-y>,
-
-" FZF Fuzzy file key maps
-nmap <leader>f :GFiles<CR>
-nmap <leader>F :Files<CR>
+" FZF----------
+nmap <C-p> :GFiles<CR>
+nmap <C-F> :Ag<Space>
 
 nmap <leader>b :Buffers<CR>
-
-nmap <leader>t :BTags<CR>
-
-nmap <leader>a :Ag<Space>
 
 nmap <leader>H :History<CR>
 nmap <leader>: :History:<CR>
 nmap <leader>/ :History/<CR>
 
+nmap <leader>C :Commands<Cr>
+
 nmap <leader>M :Maps<CR>
 
-nmap <leader>C :Commands<CR>
+nmap <leader>t :BTags<CR>
+nmap <leader>T :Tags<CR>
 
+" -------------
+
+nnoremap <leader>; A;<ESC>
+
+imap jk <ESC>
+imap JK <ESC>
+
+nmap <leader>c <Plug>CommentaryLine
+
+" Flip buffers with arrow keys
+nnoremap <expr> <right> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bn\<cr>" : "\<right>")
+nnoremap <expr> <left> (len(filter(range(0, bufnr('$')), 'buflisted(v:val)')) > 1 ? ":bp\<cr>" : "\<left>")
+
+" Insert mode delete like most text editors
+imap <C-Backspace> <C-w>
+
+"arrow keys keybindings
+" Commented out because of accidental presses
+" nnoremap <UP> ddkP
+" nnoremap <DOWN> ddp
+
+" Clear highlights
+nnoremap <leader>h :noh<CR>
+
+" " Source file
+nnoremap <leader>s :so %<CR> :noh<CR>
+
+" Emmet plugin
+imap jj <C-y>,
+
+" Asterisk highlighting
+nnoremap * *<C-o>
+
+" Better highlight while in v-mode
+function! s:VsetSearch()
+  let temp = @@
+  norm! gvy
+  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+  let @@ = temp
+endfunction
+
+vnoremap * :<C-u>call <SID>VsetSearch()<CR>//<CR><c-o>
+vnoremap # :<C-u>call <SID>VsetSearch()<CR>??<CR><c-o>
+
+" Better folding
+set foldlevelstart=1
+
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * silent! mkview
+  autocmd BufWinEnter * silent! loadview
+augroup END
+
+nnoremap <leader>z zMzvzz
+
+function! MyFoldText() " {{{
+  let line = getline(v:foldstart)
+
+  let nucolwidth = &fdc + &number * &numberwidth
+  let windowwidth = winwidth(0) - nucolwidth - 3
+  let foldedlinecount = v:foldend - v:foldstart
+
+  " expand tabs into spaces
+  let onetab = strpart('  ', 0, &tabstop)
+  let line = substitute(line, '\t', onetab, 'g')
+
+  let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+  let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+  return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
+
+"Keep search matches in the middle of the window and pulse the line when moving
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+"Make sure vim returns to the same line when you reopen a file.
+augroup line_return
+  au!
+  au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \  execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
+
+"Easy align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
+"Better copy paste
+nnoremap <leader>y "*y
+nnoremap <leader>p "*p
+nnoremap <leader>Y "+y
+nnoremap <leader>P "+p
+
+vnoremap <C-c> "+y
+vnoremap <C-v> "+p
+imap <C-v> <C-o>"+p
+
+" Quick confi file editing
+nnoremap <leader>ev :tabe $MYVIMRC<CR>
+nnoremap <leader>ei :tabe ~/.config/i3/config<CR>
+nnoremap <leader>ez :tabe ~/.zshrc<CR>
+
+"Nerdtree
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
+"---------------------------------------------------------------------------------
 " Coc
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-
-""Close preview window when completion is done.
-"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -279,6 +336,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent> gd <Plug>(coc-definition)
 nmap <leader>lr <Plug>(coc-rename)
 
+"---------------------------------------------------------------------------------
 " Plugin: GitGutter
 let g:gitgutter_map_keys = 0
 let g:gitgutter_sign_added = '▎'
@@ -289,6 +347,9 @@ let g:gitgutter_sign_modified_removed = '▋'
 
 autocmd BufWritePost * GitGutter
 
+
+"--------------------------------------------------------------------------------
+" UltiSnips
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 let g:UltiSnipsExpandTrigger="<NUL>"
@@ -303,12 +364,41 @@ function! <SID>ExpandSnippetOrReturn()
 endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
 
-" Run specific language and compile it  
-augroup run 
-  autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i 
-  autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i 
-  autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i  
-  autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i  
-  autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i  
-  autocmd filetype markdown nnoremap <silent><F5> :w <CR>k :!google-chrome %<CR>
-augroup end 
+"--------------------------------------------------------------------------------
+
+" Run specific language and compile it
+augroup run
+  autocmd filetype c nnoremap <silent><F5> :w <CR>k :split term://gcc % && ./a.out <CR> i
+  autocmd filetype cpp nnoremap <silent><F5> :w <CR>k :split term://g++ % && ./a.out <CR> i
+  autocmd filetype python nnoremap <silent><F5> :w <CR>k :split term://python % <CR> i
+  autocmd filetype php nnoremap <silent><F5> :w <CR>k :split term://php % <CR> i
+  autocmd filetype go nnoremap <silent><F5> :w <CR>k :split term://go run % <CR> i
+augroup end
+
+" Remove trailing whitespace
+
+fun! <SID>StripTrailingWhitespaces()
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+function! ChangeDirectoryCustom(dir_path)
+    let before_dir= getcwd()
+    execute 'cd '.fnameescape(a:dir_path)
+    let after_dir= getcwd()
+    if before_dir !=# after_dir
+        " place custom current directory changed event handler code here
+        " Make vim-fugitive use the new current directory repository if there is no current file
+        let current_file_name= expand('%')
+        if current_file_name == ''
+            if exists('b:git_dir')
+                unlet b:git_dir
+            endif
+            call fugitive#detect(getcwd())
+        endif
+    endif
+endfunction
